@@ -4,13 +4,15 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 
 function AdminLogin() {
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [message, setMessage] = useState(""); // State to hold response messages
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
+  // Clear message on unmount
   useEffect(() => {
     return () => setMessage("");
   }, []);
 
+  // Formik setup
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -23,21 +25,22 @@ function AdminLogin() {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
+      // Send login request
       const response = await fetch("http://127.0.0.1:5555/admin_auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
+        credentials: "include", // Include cookies with request
         body: JSON.stringify(values),
       });
 
       const data = await response.json();
-      setMessage(data.msg);
+      setMessage(data.msg); // Show message from response
 
       if (response.ok) {
-        formik.resetForm();
-        navigate("/adminhomepage");
+        formik.resetForm(); // Reset form fields
+        navigate("/adminhomepage"); // Redirect on successful login
       }
     },
   });

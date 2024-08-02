@@ -1,0 +1,192 @@
+.footer {
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 50px 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* targets small devices */
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-section,
+    .right-section {
+        width: 100%;
+        text-align: center;
+    }
+
+    .right-section {
+        margin-top: 20px;
+    }
+}
+
+.left-section {
+    margin-right: -100px;
+}
+
+.car-image {
+    width: 100%;
+    margin-right: 0%;
+    margin-left: -200px;
+
+}
+
+.right-section {
+    width: 100%;
+    margin-top: -55px;
+}
+
+.logo h1 {
+    font-size: 3em;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.description p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+.social-links a[aria-label="Facebook"] {
+    color: #3b5998;
+}
+
+.social-links a[aria-label="Instagram"] {
+    color: #e1306c;
+}
+
+.social-links a[aria-label="Twitter"] {
+    color: #1da1f2;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    font-size: 24px;
+    color: #333;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+    color: #007bff;
+    transform: scale(1.2);
+
+}
+
+.opening-hours {
+    width: 100%;
+    margin-left: 100px;
+    margin-right: -100px;
+}
+
+.opening-hours,
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.opening-hours h2,
+.contact-info h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.opening-hours p,
+.contact-info p {
+    line-height: 1.6;
+}
+
+.opening-hours span {
+    font-weight: bold;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 50px;
+}
+
+.contact-info {
+    margin-left: 90px;
+    margin-right: -250px;
+    width: 100%;
+}
+
+.contact-info .fa-phone {
+    color: #007bff;
+}
+
+.bi bi-geo-alt {
+    color: #04f33c;
+    margin-right: 10px;
+
+}
+
+.contact-info .bi {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.contact-info .bi-telephone-forward-fill {
+    color: #28a745;
+}
+
+.contact-info .bi-envelope-at-fill {
+    color: #ffc107;
+}
+
+.contact-info .bi-geo-alt {
+    color: #17a2b8;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #6c757d;
+
+}
+
+
+.contact-item {
+    color: #dad9d9;
+    text-decoration: none;
+    transition: color 0.3s, text-decoration 0.3s;
+}
+
+.contact-item:hover {
+    color: #f90505;
+    text-decoration: underline;
+
+}
+
+.contact-item i {
+    margin-right: 8px;
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+    }
+}

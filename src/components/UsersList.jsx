@@ -46,11 +46,16 @@ const UsersList = () => {
   }, [searchQuery, users]);
 
   const handleDelete = async (userId) => {
-    try {
-      await axios.delete(`http://127.0.0.1:5555/users/${userId}`);
-      setUsers(users.filter((user) => user.id !== userId));
-    } catch (err) {
-      console.error("Failed to delete user:", err.message);
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this user?"
+    );
+    if (confirmDelete) {
+      try {
+        await axios.delete(`http://127.0.0.1:5555/users/${userId}`);
+        setUsers(users.filter((user) => user.id !== userId));
+      } catch (err) {
+        console.error("Failed to delete user:", err.message);
+      }
     }
   };
 
@@ -70,6 +75,7 @@ const UsersList = () => {
         />
         <BiSearch className="usersearchicon" />
       </div>
+
       <div className="user-list">
         {filteredUsers.map((user) => (
           <div className="user-card" key={user.id}>

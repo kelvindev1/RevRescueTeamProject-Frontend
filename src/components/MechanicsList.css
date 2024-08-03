@@ -1,11 +1,11 @@
-.user-list {
+.mechanic-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
 
-.user-card {
+.mechanic-card {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -15,14 +15,14 @@
     position: relative;
 }
 
-.user-card:hover {
+.mechanic-card:hover {
     transform: scale(1.14);
     background-color: #fff;
     cursor: pointer;
     box-shadow: 1px 1px 20px blue;
 }
 
-.user-card img {
+.mechanic-card img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -30,17 +30,17 @@
     margin-bottom: 15px;
 }
 
-.user-card h2 {
+.mechanic-card h2 {
     font-size: 1.2em;
     margin: 0 0 10px;
 }
 
-.user-card p {
+.mechanic-card p {
     margin: 5px 0;
     font-size: 0.9em;
 }
 
-.delete-button {
+.delete-button-mechanic {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -53,24 +53,7 @@
     cursor: pointer;
 }
 
-.search-container {
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.search-input {
-    padding: 10px;
-    font-size: 16px;
-    width: 80%;
-    max-width: 500px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-}
-
-.usersearchicon {
+.mechanicsearchicon {
     font-size: 16px;
     margin-left: 4px;
 }

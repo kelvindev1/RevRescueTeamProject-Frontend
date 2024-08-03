@@ -1,67 +1,65 @@
-/* src/AdminLogin.css */
-
 .admin-login-container {
-    max-width: 400px; /* Set a maximum width for the form */
-    margin: 50px auto; /* Center the form horizontally and add some vertical space */
-    padding: 20px; /* Padding inside the container */
-    background-color: #e8e4e4; /* Maintain the same background color */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(55, 55, 55, 0.2); /* Shadow for depth */
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #e8e4e4;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(55, 55, 55, 0.2);
 }
 
 .admin-login-title {
-    text-align: center; /* Center the title */
-    margin-bottom: 20px; /* Space below the title */
-    font-size: 30px; /* Font size for the title */
-    font-weight: 600; /* Bold title */
-    color: #171518; /* Match the title color from AddProduct.css */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #171518;
 }
 
 .admin-login-label {
-    margin-bottom: 5px; /* Space below each label */
-    font-weight: 500; /* Slightly bolder text for labels */
-    color: #555; /* Dark color for labels */
-    font-style: italic; /* Italic style for labels */
-    text-align: left; /* Align labels to the left */
-    width: 90%; /* Ensure the label takes the full width */
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+    font-style: italic;
+    text-align: left;
+    width: 90%;
 }
 
 .admin-login-input {
-    padding: 12px; /* Inner padding for inputs */
-    border: 2px solid #3a8ce3; /* Primary border color */
-    border-radius: 8px; /* More pronounced rounded corners */
-    margin-bottom: 20px; /* Space below each input */
-    font-size: 16px; /* Font size */
-    background-color: #e9e8e9; /* Match the background color from AddProduct.css */
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
-    width: 90%; /* Make input fields full width */
+    padding: 12px;
+    border: 2px solid #3a8ce3;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #e9e8e9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 90%;
 }
 
 .admin-login-input:focus {
-    border-color: #0056b3; /* Darker border color on focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow effect on focus */
-    outline: none; /* Remove default outline */
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
 }
 
 .admin-login-button {
-    padding: 12px; /* Inner padding for the button */
-    background-color: #3d03f9; /* Maintain the same button color */
-    color: white; /* Button text color */
-    border: none; /* Remove default border */
-    border-radius: 8px; /* Rounded corners for the button */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
-    width: 25%; /* Full width button */
+    padding: 12px;
+    background-color: #3d03f9;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 25%;
 }
 
 .admin-login-button:hover {
-    background-color: #0717ca; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background-color: #0717ca;
+    transform: scale(1.05);
 }
 
 .admin-login-error-message {
-    color: #f5041d; /* Red color for error messages */
-    font-size: 14px; /* Font size for error messages */
-    margin-top: -12px; /* Space above error messages */
+    color: #f5041d;
+    font-size: 14px;
+    margin-top: -12px;
 }

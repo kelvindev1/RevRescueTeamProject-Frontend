@@ -9,7 +9,7 @@ import MechanicLogin from "./components/MechanicLogin";
 import UserLogin from "./components/UserLogin";
 import UserSignup from "./components/UserSignup";
 import MechanicSignup from "./components/MechanicSignup";
-// import MechanicHomePage from './components/MechanicHomePage';
+import MechanicHomePage from "./components/MechanicHomePage";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route path="/adminhomepage" element={<AdminHomePage />} />
           <Route path="/user_register" element={<UserSignup />} />
           <Route path="/mechanic_register" element={<MechanicSignup />} />
-          {/* <Route path="/mechanichomepage" element={<MechanicHomePage />} /> */}
+          <Route path="/mechanichomepage" element={<MechanicHomePage />} />
           <Route
             path="/home"
             element={

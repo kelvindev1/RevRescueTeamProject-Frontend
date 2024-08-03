@@ -1,6 +1,7 @@
 import React from "react";
 import AdminManager from "./AdminManager";
 import { Link } from "react-router-dom";
+import UsersList from "./UsersList";
 
 function AdminHomePage() {
   return (
@@ -16,6 +17,9 @@ function AdminHomePage() {
 
       <div>
         <AdminManager />
+      </div>
+      <div>
+        <UsersList />
       </div>
     </>
   );

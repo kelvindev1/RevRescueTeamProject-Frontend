@@ -1,0 +1,77 @@
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.user-card:hover {
+    transform: scale(1.14);
+    background-color: #fff;
+    cursor: pointer;
+    box-shadow: 1px 1px 20px blue;
+}
+
+.user-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.user-card h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.user-card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+}
+
+.usersearchicon {
+    font-size: 16px;
+    margin-left: 4px;
+}

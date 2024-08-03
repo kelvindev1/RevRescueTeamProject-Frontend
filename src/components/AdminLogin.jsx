@@ -3,17 +3,16 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import './AdminLogin.css'; // Import the new CSS file
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
-  const [message, setMessage] = useState(""); // State to hold response messages
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  // Clear message on unmount
   useEffect(() => {
     return () => setMessage("");
   }, []);
 
-  // Formik setup
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,23 +24,28 @@ function AdminLogin() {
         .required("Email is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: async (values) => {
-      // Send login request
-      const response = await fetch("http://127.0.0.1:5555/admin_auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // Include cookies with request
-        body: JSON.stringify(values),
-      });
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const response = await fetch("http://127.0.0.1:5555/admin_auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(values),
+        });
 
-      const data = await response.json();
-      setMessage(data.msg); // Show message from response
+        const data = await response.json();
+        setMessage(data.msg);
 
-      if (response.ok) {
-        formik.resetForm(); // Reset form fields
-        navigate("/adminhomepage"); // Redirect on successful login
+        if (response.ok) {
+          formik.resetForm();
+          navigate("/adminhomepage");
+        }
+      } catch (error) {
+        setMessage("An error occurred. Please try again.");
+      } finally {
+        setSubmitting(false);
       }
     },
   });
@@ -54,6 +58,9 @@ function AdminLogin() {
         <input
           className="admin-login-input"
           id="email"
+        <label htmlFor="admin-email">Email</label>
+        <input
+          id="admin-email"
           name="email"
           type="email"
           onChange={formik.handleChange}
@@ -68,6 +75,9 @@ function AdminLogin() {
         <input
           className="admin-login-input"
           id="password"
+        <label htmlFor="admin-password">Password</label>
+        <input
+          id="admin-password"
           name="password"
           type="password"
           onChange={formik.handleChange}
@@ -77,7 +87,6 @@ function AdminLogin() {
         {formik.touched.password && formik.errors.password ? (
           <div className="admin-login-error-message">{formik.errors.password}</div>
         ) : null}
-
         <button className="admin-login-button" type="submit" disabled={!formik.isValid}>
           Log In
         </button>
@@ -86,6 +95,11 @@ function AdminLogin() {
       <p>
         <Link to="/admin_register">Don't have an account? Register here</Link>
       </p>
+        <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>
+          Log In
+        </button>
+      </form>
+      {message && <p>{message}</p>}
     </div>
   );
 }

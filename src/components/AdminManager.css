@@ -1,0 +1,134 @@
+.admin-search-box {
+  margin-top: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 5px;
+}
+
+.admin-search-box:hover {
+  box-shadow: 1px 1px 20px blue;
+  /* filter: drop-shadow(1px 1px 20px blue); */
+}
+
+
+.admin-search-box input {
+  margin-right: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+.adminsearchicon {
+  cursor: pointer;
+  font-size: 24px;
+
+}
+
+.error-message {
+  color: red;
+  margin: 20px;
+}
+
+.admin-list {
+  margin: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.admin-card:hover {
+  transform: scale(1.14);
+  cursor: pointer;
+  box-shadow: 1px 1px 20px blueviolet;
+}
+
+.admin-card-content p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.admin-update-btn,
+.admin-save-btn {
+  background-color: blue;
+  border-color: blue;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.admin-update-btn:hover,
+.admin-save-btn:hover {
+  background-color: green;
+}
+
+.admin-delete-btn,
+.admin-cancel-btn {
+  border-color: green;
+  background-color: green;
+  color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+.admin-delete-btn:hover,
+.admin-cancel-btn:hover {
+  background-color: red;
+}
+
+.admin-update-form {
+  display: inline-block;
+}
+
+.admin-update-form input {
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+
+
+
+/* AdminHomepage css */
+.welcome-p {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+
+}
+
+.admin--register-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.admin--register-link a {
+  text-decoration: none;
+}
+
+.admin--register-link a:hover {
+  text-decoration: underline;
+}

@@ -46,6 +46,7 @@ function UserLogin() {
         },
     });
 
+
     return (
         <div className="user-login-container">
             <h1 className="user-login-title">User Login</h1>
@@ -77,6 +78,35 @@ function UserLogin() {
                 {formik.touched.password && formik.errors.password ? (
                     <div className="user-login-error-message">{formik.errors.password}</div>
                 ) : null}
+  return (
+    <div>
+      <h1>User Login</h1>
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="user-email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
+
+        <label htmlFor="password">Password</label>
+        <input
+          id="user-password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
 
                 <button type="submit" className="user-login-button" disabled={!formik.isValid}>
                     Log In

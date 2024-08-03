@@ -77,6 +77,35 @@ function MechanicLogin() {
                 {formik.touched.password && formik.errors.password ? (
                     <div className="mechanic-login-error-message">{formik.errors.password}</div>
                 ) : null}
+  return (
+    <div>
+      <h1>Mechanic Login</h1>
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="mechanic-email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.email}
+        />
+        {formik.touched.email && formik.errors.email ? (
+          <div>{formik.errors.email}</div>
+        ) : null}
+
+        <label htmlFor="password">Password</label>
+        <input
+          id="mechanic-password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.password}
+        />
+        {formik.touched.password && formik.errors.password ? (
+          <div>{formik.errors.password}</div>
+        ) : null}
 
                 <button type="submit" className="mechanic-login-button" disabled={!formik.isValid}>
                     Log In

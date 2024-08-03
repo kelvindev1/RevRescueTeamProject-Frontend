@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
+import './AdminLogin.css'; // Import the new CSS file
 
 function AdminLogin() {
   const [message, setMessage] = useState(""); // State to hold response messages
@@ -46,11 +47,12 @@ function AdminLogin() {
   });
 
   return (
-    <div>
-      <h1>Admin Login</h1>
+    <div className="admin-login-container">
+      <h1 className="admin-login-title">Admin Login</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="email">Email</label>
+        <label className="admin-login-label" htmlFor="email">Email</label>
         <input
+          className="admin-login-input"
           id="email"
           name="email"
           type="email"
@@ -59,11 +61,12 @@ function AdminLogin() {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div className="admin-login-error-message">{formik.errors.email}</div>
         ) : null}
 
-        <label htmlFor="password">Password</label>
+        <label className="admin-login-label" htmlFor="password">Password</label>
         <input
+          className="admin-login-input"
           id="password"
           name="password"
           type="password"
@@ -72,14 +75,14 @@ function AdminLogin() {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div className="admin-login-error-message">{formik.errors.password}</div>
         ) : null}
 
-        <button type="submit" disabled={!formik.isValid}>
+        <button className="admin-login-button" type="submit" disabled={!formik.isValid}>
           Log In
         </button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="admin-login-error-message">{message}</p>}
       <p>
         <Link to="/admin_register">Don't have an account? Register here</Link>
       </p>

@@ -51,7 +51,7 @@ function MechanicLogin() {
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
-          id="email"
+          id="mechanic-email"
           name="email"
           type="email"
           onChange={formik.handleChange}
@@ -64,7 +64,7 @@ function MechanicLogin() {
 
         <label htmlFor="password">Password</label>
         <input
-          id="password"
+          id="mechanic-password"
           name="password"
           type="password"
           onChange={formik.handleChange}

@@ -4,3 +4,4 @@ react-icons
 bootstrap-icons
 formik
 yup
+bootstrap

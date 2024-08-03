@@ -14,22 +14,8 @@ const MechanicsList = () => {
     const fetchMechanics = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:5555/mechanics");
-        const mechanicsData = response.data;
-
-        const mechanicsWithLocationPromises = mechanicsData.map(
-          async (mechanic) => {
-            const locationResponse = await axios.get(
-              `http://127.0.0.1:5555/locations/${mechanic.location_id}`
-            );
-            return { ...mechanic, location: locationResponse.data.address };
-          }
-        );
-
-        const mechanicsWithLocation = await Promise.all(
-          mechanicsWithLocationPromises
-        );
-        setMechanics(mechanicsWithLocation);
-        setFilteredMechanics(mechanicsWithLocation);
+        setMechanics(response.data);
+        setFilteredMechanics(response.data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -64,6 +50,7 @@ const MechanicsList = () => {
       }
     }
   };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -87,20 +74,17 @@ const MechanicsList = () => {
             <img
               src={mechanic.profile_picture}
               alt={`${mechanic.first_name} ${mechanic.last_name}'s profile`}
+              className="profile-picture"
             />
             <h2>{mechanic.username}</h2>
             <p>
-              <i>Name:</i>
-              {mechanic.first_name} {mechanic.last_name}
+              <i>Name:</i> {mechanic.first_name} {mechanic.last_name}
             </p>
             <p>
               <i>Email:</i> {mechanic.email}
             </p>
             <p>
               <i>Phone:</i> {mechanic.phone_number}
-            </p>
-            <p>
-              <i>Location:</i> {mechanic.location}
             </p>
             <p>
               <i>Expertise:</i> {mechanic.expertise}

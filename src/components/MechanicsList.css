@@ -24,8 +24,8 @@
 
 .mechanic-card img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: auto;
     object-fit: cover;
     margin-bottom: 15px;
 }

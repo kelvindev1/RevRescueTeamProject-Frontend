@@ -58,13 +58,14 @@ function MechanicLogin() {
           Email
         </label>
         <input
-          id="email"
+          id="mechanic-login-email"
           name="email"
           type="email"
           className="mechanic-login-input"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          autoComplete="email"
         />
         {formik.touched.email && formik.errors.email ? (
           <div className="mechanic-login-error-message">
@@ -76,13 +77,14 @@ function MechanicLogin() {
           Password
         </label>
         <input
-          id="password"
+          id="mechanic-login-password"
           name="password"
           type="password"
           className="mechanic-login-input"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          autoComplete="current-password"
         />
         {formik.touched.password && formik.errors.password ? (
           <div className="mechanic-login-error-message">

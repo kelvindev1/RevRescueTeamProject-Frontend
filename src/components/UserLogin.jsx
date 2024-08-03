@@ -51,13 +51,14 @@ function UserLogin() {
           Email
         </label>
         <input
-          id="email"
+          id="user-login-email"
           name="email"
           type="email"
           className="user-login-input"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          autoComplete="email"
         />
         {formik.touched.email && formik.errors.email ? (
           <div className="user-login-error-message">{formik.errors.email}</div>
@@ -67,13 +68,14 @@ function UserLogin() {
           Password
         </label>
         <input
-          id="password"
+          id="user-login-password"
           name="password"
           type="password"
           className="user-login-input"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          autoComplete="current-password"
         />
         {formik.touched.password && formik.errors.password ? (
           <div className="user-login-error-message">

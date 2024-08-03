@@ -58,12 +58,13 @@ function AdminLogin() {
         </label>
         <input
           className="admin-login-input"
-          id="email"
+          id="admin-login-email"
           name="email"
           type="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          autoComplete="email"
         />
         {formik.touched.email && formik.errors.email ? (
           <div className="admin-login-error-message">{formik.errors.email}</div>
@@ -74,12 +75,13 @@ function AdminLogin() {
         </label>
         <input
           className="admin-login-input"
-          id="password"
+          id="admin-login-password"
           name="password"
           type="password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          autoComplete="current-password"
         />
         {formik.touched.password && formik.errors.password ? (
           <div className="admin-login-error-message">

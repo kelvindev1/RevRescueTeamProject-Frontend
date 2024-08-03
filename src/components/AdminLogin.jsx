@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+import './AdminLogin.css'; // Import the new CSS file
 import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
@@ -49,9 +51,13 @@ function AdminLogin() {
   });
 
   return (
-    <div>
-      <h1>Admin Login</h1>
+    <div className="admin-login-container">
+      <h1 className="admin-login-title">Admin Login</h1>
       <form onSubmit={formik.handleSubmit}>
+        <label className="admin-login-label" htmlFor="email">Email</label>
+        <input
+          className="admin-login-input"
+          id="email"
         <label htmlFor="admin-email">Email</label>
         <input
           id="admin-email"
@@ -62,9 +68,13 @@ function AdminLogin() {
           value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div className="admin-login-error-message">{formik.errors.email}</div>
         ) : null}
 
+        <label className="admin-login-label" htmlFor="password">Password</label>
+        <input
+          className="admin-login-input"
+          id="password"
         <label htmlFor="admin-password">Password</label>
         <input
           id="admin-password"
@@ -75,9 +85,16 @@ function AdminLogin() {
           value={formik.values.password}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div className="admin-login-error-message">{formik.errors.password}</div>
         ) : null}
-
+        <button className="admin-login-button" type="submit" disabled={!formik.isValid}>
+          Log In
+        </button>
+      </form>
+      {message && <p className="admin-login-error-message">{message}</p>}
+      <p>
+        <Link to="/admin_register">Don't have an account? Register here</Link>
+      </p>
         <button type="submit" disabled={!formik.isValid || formik.isSubmitting}>
           Log In
         </button>

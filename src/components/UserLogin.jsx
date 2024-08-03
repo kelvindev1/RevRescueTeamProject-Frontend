@@ -48,7 +48,7 @@ function UserLogin() {
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
-          id="email"
+          id="user-email"
           name="email"
           type="email"
           onChange={formik.handleChange}
@@ -61,7 +61,7 @@ function UserLogin() {
 
         <label htmlFor="password">Password</label>
         <input
-          id="password"
+          id="user-password"
           name="password"
           type="password"
           onChange={formik.handleChange}

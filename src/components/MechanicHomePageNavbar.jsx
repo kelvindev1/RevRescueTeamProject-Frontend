@@ -13,7 +13,7 @@ function MechanicHomePageNavbar() {
         }}
       >
         <Link
-          to={"/mechanichomepage/reviews"}
+          to={"/"}
           style={{
             margin: "10px",
             padding: "4px",
@@ -21,7 +21,7 @@ function MechanicHomePageNavbar() {
             fontSize: "20px",
           }}
         >
-          Reviews
+          logout
         </Link>
       </div>
     </>

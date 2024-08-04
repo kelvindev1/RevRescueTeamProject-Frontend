@@ -54,11 +54,12 @@ function AdminSignup() {
     <div>
       <h1>Admin Signup</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="username">Username</label>
         <input
           id="username"
           name="username"
           type="text"
+          placeholder="Enter Username"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
@@ -66,12 +67,14 @@ function AdminSignup() {
         {formik.touched.username && formik.errors.username ? (
           <div>{formik.errors.username}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
           type="email"
+          placeholder="Enter Email"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -79,12 +82,14 @@ function AdminSignup() {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
           type="password"
+          placeholder="Enter Password"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -92,12 +97,14 @@ function AdminSignup() {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password2">Confirm Password</label>
         <input
           id="password2"
           name="password2"
           type="password"
+          placeholder="Confirm Password"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}
@@ -106,6 +113,7 @@ function AdminSignup() {
           <div>{formik.errors.password2}</div>
         ) : null}
 
+        <br />
         <button type="submit" disabled={!formik.isValid}>
           Sign Up
         </button>

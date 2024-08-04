@@ -69,11 +69,12 @@ function UserSignup() {
     <div>
       <h1>User Signup</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="first_name">First Name</label>
         <input
           id="first_name"
           name="first_name"
           type="text"
+          placeholder="Enter Your First Name"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.first_name}
@@ -81,12 +82,14 @@ function UserSignup() {
         {formik.touched.first_name && formik.errors.first_name ? (
           <div>{formik.errors.first_name}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="last_name">Last Name</label>
         <input
           id="last_name"
           name="last_name"
           type="text"
+          placeholder="Enter Your Last Name"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.last_name}
@@ -94,11 +97,13 @@ function UserSignup() {
         {formik.touched.last_name && formik.errors.last_name ? (
           <div>{formik.errors.last_name}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="username">Username</label>
         <input
           id="username"
           name="username"
+          placeholder="Enter a Username"
+          required
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -107,12 +112,14 @@ function UserSignup() {
         {formik.touched.username && formik.errors.username ? (
           <div>{formik.errors.username}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
           type="email"
+          placeholder="Enter Your Email"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -120,12 +127,14 @@ function UserSignup() {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="phone_number">Phone Number</label>
         <input
           id="phone_number"
           name="phone_number"
           type="text"
+          placeholder="Enter Your Phone Number"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone_number}
@@ -133,12 +142,13 @@ function UserSignup() {
         {formik.touched.phone_number && formik.errors.phone_number ? (
           <div>{formik.errors.phone_number}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="car_info">Car Info</label>
-        <input
+        <textarea
           id="car_info"
           name="car_info"
-          type="text"
+          placeholder="Enter all your car information"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.car_info}
@@ -146,12 +156,14 @@ function UserSignup() {
         {formik.touched.car_info && formik.errors.car_info ? (
           <div>{formik.errors.car_info}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
           type="password"
+          placeholder="Enter Password"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -159,12 +171,13 @@ function UserSignup() {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password2">Confirm Password</label>
         <input
           id="password2"
           name="password2"
           type="password"
+          placeholder="Confirm Password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}
@@ -172,6 +185,7 @@ function UserSignup() {
         {formik.touched.password2 && formik.errors.password2 ? (
           <div>{formik.errors.password2}</div>
         ) : null}
+        <br />
 
         <label htmlFor="profile_picture">Profile Picture</label>
         <input
@@ -188,6 +202,7 @@ function UserSignup() {
         {formik.touched.profile_picture && formik.errors.profile_picture ? (
           <div>{formik.errors.profile_picture}</div>
         ) : null}
+        <br />
 
         <button type="submit" disabled={!formik.isValid}>
           Sign Up

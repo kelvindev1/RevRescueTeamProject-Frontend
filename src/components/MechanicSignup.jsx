@@ -81,11 +81,12 @@ function MechanicSignup() {
     <div>
       <h1>Mechanic Signup</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="first_name">First Name</label>
         <input
           id="first_name"
           name="first_name"
           type="text"
+          placeholder="Enter your first name"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.first_name}
@@ -93,12 +94,14 @@ function MechanicSignup() {
         {formik.touched.first_name && formik.errors.first_name ? (
           <div>{formik.errors.first_name}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="last_name">Last Name</label>
         <input
           id="last_name"
           name="last_name"
           type="text"
+          placeholder="Enter your last name"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.last_name}
@@ -106,12 +109,14 @@ function MechanicSignup() {
         {formik.touched.last_name && formik.errors.last_name ? (
           <div>{formik.errors.last_name}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="username">Username</label>
         <input
           id="username"
           name="username"
           type="text"
+          placeholder="Enter a Username"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
@@ -119,12 +124,14 @@ function MechanicSignup() {
         {formik.touched.username && formik.errors.username ? (
           <div>{formik.errors.username}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
           type="email"
+          placeholder="Enter your Email"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -132,12 +139,14 @@ function MechanicSignup() {
         {formik.touched.email && formik.errors.email ? (
           <div>{formik.errors.email}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="phone_number">Phone Number</label>
         <input
           id="phone_number"
           name="phone_number"
           type="text"
+          placeholder="Enter your Phone Number"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone_number}
@@ -145,11 +154,13 @@ function MechanicSignup() {
         {formik.touched.phone_number && formik.errors.phone_number ? (
           <div>{formik.errors.phone_number}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="profile_picture">Profile Picture</label>
+        <label htmlFor="profile_picture">ProfiLe Picture:</label>
         <input
           id="profile_picture"
           name="profile_picture"
+          required
           type="file"
           onChange={(event) => setProfilePicture(event.currentTarget.files[0])}
           onBlur={formik.handleBlur}
@@ -159,11 +170,12 @@ function MechanicSignup() {
         ) : null}
         <br />
 
-        <label htmlFor="expertise">Expertise</label>
         <input
           id="expertise"
           name="expertise"
           type="text"
+          placeholder="Enter your field of Expertise"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.expertise}
@@ -171,11 +183,13 @@ function MechanicSignup() {
         {formik.touched.expertise && formik.errors.expertise ? (
           <div>{formik.errors.expertise}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="bio">Bio</label>
         <textarea
           id="bio"
           name="bio"
+          placeholder="Write a bio about yourself"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.bio}
@@ -183,12 +197,14 @@ function MechanicSignup() {
         {formik.touched.bio && formik.errors.bio ? (
           <div>{formik.errors.bio}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="experience_years">Experience Years</label>
         <input
           id="experience_years"
           name="experience_years"
           type="number"
+          placeholder="Years of Experience"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.experience_years}
@@ -196,12 +212,14 @@ function MechanicSignup() {
         {formik.touched.experience_years && formik.errors.experience_years ? (
           <div>{formik.errors.experience_years}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
           type="password"
+          placeholder="Enter a strong Password"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -209,12 +227,14 @@ function MechanicSignup() {
         {formik.touched.password && formik.errors.password ? (
           <div>{formik.errors.password}</div>
         ) : null}
+        <br />
 
-        <label htmlFor="password2">Confirm Password</label>
         <input
           id="password2"
           name="password2"
           type="password"
+          placeholder="Confirm the Password"
+          required
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}
@@ -222,6 +242,7 @@ function MechanicSignup() {
         {formik.touched.password2 && formik.errors.password2 ? (
           <div>{formik.errors.password2}</div>
         ) : null}
+        <br />
 
         <button type="submit" disabled={!formik.isValid}>
           Sign Up

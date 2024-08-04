@@ -15,17 +15,8 @@ const UsersList = () => {
       try {
         const response = await axios.get("http://127.0.0.1:5555/users");
         const usersData = response.data;
-
-        const usersWithLocationPromises = usersData.map(async (user) => {
-          const locationResponse = await axios.get(
-            `http://127.0.0.1:5555/locations/${user.location_id}`
-          );
-          return { ...user, location: locationResponse.data.address };
-        });
-
-        const usersWithLocation = await Promise.all(usersWithLocationPromises);
-        setUsers(usersWithLocation);
-        setFilteredUsers(usersWithLocation);
+        setUsers(usersData);
+        setFilteredUsers(usersData);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -59,6 +50,15 @@ const UsersList = () => {
     }
   };
 
+  const getProfilePictureUrl = (profilePicture) => {
+    // If profilePicture starts with 'http', return it as is
+    if (profilePicture.startsWith("http")) {
+      return profilePicture;
+    }
+    // Otherwise, treat it as a local file
+    return `http://127.0.0.1:5555/uploads/${profilePicture}`;
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -80,7 +80,7 @@ const UsersList = () => {
         {filteredUsers.map((user) => (
           <div className="user-card" key={user.id}>
             <img
-              src={user.profile_picture}
+              src={getProfilePictureUrl(user.profile_picture)}
               alt={`${user.username}'s profile`}
             />
             <h2>{user.username}</h2>
@@ -89,9 +89,6 @@ const UsersList = () => {
             </p>
             <p>
               <i>Email:</i> {user.email}
-            </p>
-            <p>
-              <i>Location:</i> {user.location}
             </p>
             <p>
               <i>Phone:</i> {user.phone_number}

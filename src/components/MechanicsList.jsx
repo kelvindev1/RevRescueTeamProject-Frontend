@@ -37,7 +37,7 @@ const MechanicsList = () => {
 
   const handleDelete = async (mechanicId) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this Mechanic?"
+      "Are you sure you want to delete this mechanic?"
     );
     if (confirmDelete) {
       try {
@@ -49,6 +49,15 @@ const MechanicsList = () => {
         console.error("Failed to delete mechanic:", err.message);
       }
     }
+  };
+
+  const getProfilePictureUrl = (profilePicture) => {
+    // If profilePicture starts with 'http', return it as is
+    if (profilePicture.startsWith("http")) {
+      return profilePicture;
+    }
+    // Otherwise, treat it as a local file
+    return `http://127.0.0.1:5555/uploads/${profilePicture}`;
   };
 
   if (loading) return <p>Loading...</p>;
@@ -72,7 +81,7 @@ const MechanicsList = () => {
         {filteredMechanics.map((mechanic) => (
           <div className="mechanic-card" key={mechanic.id}>
             <img
-              src={mechanic.profile_picture}
+              src={getProfilePictureUrl(mechanic.profile_picture)}
               alt={`${mechanic.first_name} ${mechanic.last_name}'s profile`}
               className="profile-picture"
             />

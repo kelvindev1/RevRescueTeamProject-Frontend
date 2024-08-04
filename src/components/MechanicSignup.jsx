@@ -82,11 +82,12 @@ function MechanicSignup() {
       <h1>Mechanic Signup</h1>
       <form onSubmit={formik.handleSubmit}>
         <input
-          id="first_name"
+          id="mechanic-first_name"
           name="first_name"
           type="text"
           placeholder="Enter your first name"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.first_name}
@@ -97,11 +98,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="last_name"
+          id="mechanic-last_name"
           name="last_name"
           type="text"
           placeholder="Enter your last name"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.last_name}
@@ -112,11 +114,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="username"
+          id="mechanic-username"
           name="username"
           type="text"
           placeholder="Enter a Username"
           required
+          autoComplete="username"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
@@ -127,11 +130,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="email"
+          id="mechanic-signup-email"
           name="email"
           type="email"
           placeholder="Enter your Email"
           required
+          autoComplete="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -142,11 +146,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="phone_number"
+          id="mechanic-phone_number"
           name="phone_number"
           type="text"
           placeholder="Enter your Phone Number"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone_number}
@@ -176,6 +181,7 @@ function MechanicSignup() {
           type="text"
           placeholder="Enter your field of Expertise"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.expertise}
@@ -190,6 +196,7 @@ function MechanicSignup() {
           name="bio"
           placeholder="Write a bio about yourself"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.bio}
@@ -205,6 +212,7 @@ function MechanicSignup() {
           type="number"
           placeholder="Years of Experience"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.experience_years}
@@ -215,11 +223,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="password"
+          id="mechanic-password"
           name="password"
           type="password"
           placeholder="Enter a strong Password"
           required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -230,11 +239,12 @@ function MechanicSignup() {
         <br />
 
         <input
-          id="password2"
+          id="mechanic-password2"
           name="password2"
           type="password"
           placeholder="Confirm the Password"
           required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}

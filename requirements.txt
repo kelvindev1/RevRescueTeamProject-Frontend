@@ -5,3 +5,4 @@ bootstrap-icons
 formik
 yup
 bootstrap
+prop-types

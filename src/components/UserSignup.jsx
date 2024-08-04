@@ -75,6 +75,7 @@ function UserSignup() {
           type="text"
           placeholder="Enter Your First Name"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.first_name}
@@ -90,6 +91,7 @@ function UserSignup() {
           type="text"
           placeholder="Enter Your Last Name"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.last_name}
@@ -105,6 +107,7 @@ function UserSignup() {
           placeholder="Enter a Username"
           required
           type="text"
+          autoComplete="username"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
@@ -120,6 +123,7 @@ function UserSignup() {
           type="email"
           placeholder="Enter Your Email"
           required
+          autoComplete="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -135,6 +139,7 @@ function UserSignup() {
           type="text"
           placeholder="Enter Your Phone Number"
           required
+          autoComplete="tel"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone_number}
@@ -149,6 +154,7 @@ function UserSignup() {
           name="car_info"
           placeholder="Enter all your car information"
           required
+          autoComplete="off"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.car_info}
@@ -164,6 +170,7 @@ function UserSignup() {
           type="password"
           placeholder="Enter Password"
           required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -178,6 +185,8 @@ function UserSignup() {
           name="password2"
           type="password"
           placeholder="Confirm Password"
+          required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}

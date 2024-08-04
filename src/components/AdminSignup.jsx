@@ -60,6 +60,7 @@ function AdminSignup() {
           type="text"
           placeholder="Enter Username"
           required
+          autoComplete="username"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
@@ -75,6 +76,7 @@ function AdminSignup() {
           type="email"
           placeholder="Enter Email"
           required
+          autoComplete="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
@@ -90,6 +92,7 @@ function AdminSignup() {
           type="password"
           placeholder="Enter Password"
           required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
@@ -105,6 +108,7 @@ function AdminSignup() {
           type="password"
           placeholder="Confirm Password"
           required
+          autoComplete="new-password"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}

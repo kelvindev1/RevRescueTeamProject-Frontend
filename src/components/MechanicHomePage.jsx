@@ -1,7 +1,12 @@
 import React from "react";
+import MechanicHomePageNavbar from "./MechanicHomePageNavbar";
 
 function MechanicHomepage() {
-  return <div></div>;
+  return (
+    <>
+      <MechanicHomePageNavbar />
+    </>
+  );
 }
 
 export default MechanicHomepage;

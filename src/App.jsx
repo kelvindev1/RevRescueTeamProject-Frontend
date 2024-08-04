@@ -13,6 +13,7 @@ import AdminManager from "./components/AdminManager";
 import UsersList from "./components/UsersList";
 import MechanicsList from "./components/MechanicsList";
 import MechanicHomePage from "./components/MechanicHomePage";
+import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
           <Route path="/adminhomepage/users" element={<UsersList />} />
           <Route path="/adminhomepage/mechanics" element={<MechanicsList />} />
           <Route path="/mechanichomepage" element={<MechanicHomePage />} />
+          <Route
+            path="/mechanichomepage/reviews"
+            element={<MechanicReviewsReceived />}
+          />
         </Routes>
       </Router>
     </>

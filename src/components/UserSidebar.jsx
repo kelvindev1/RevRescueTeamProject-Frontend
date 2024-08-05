@@ -22,9 +22,9 @@ function UserSidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
-        <a href="#" className="item">
+        <a href="home/services" className="item">
           <FaWrench className="icon" />
-          Service
+          Services
         </a>{" "}
         <a href="#" className="item">
           <BiSolidReport className="icon" />

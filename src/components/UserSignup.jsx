@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import './UserSignup.css'; // Import the updated CSS file
+import "./UserSignup.css";
 
 function UserSignup() {
   const [message, setMessage] = useState("");
@@ -83,7 +83,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.first_name && formik.errors.first_name ? (
-          <div className="user-signup-error-message">{formik.errors.first_name}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.first_name}
+          </div>
         ) : null}
         <br />
 
@@ -100,7 +102,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.last_name && formik.errors.last_name ? (
-          <div className="user-signup-error-message">{formik.errors.last_name}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.last_name}
+          </div>
         ) : null}
         <br />
 
@@ -117,7 +121,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.username && formik.errors.username ? (
-          <div className="user-signup-error-message">{formik.errors.username}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.username}
+          </div>
         ) : null}
         <br />
 
@@ -151,7 +157,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.phone_number && formik.errors.phone_number ? (
-          <div className="user-signup-error-message">{formik.errors.phone_number}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.phone_number}
+          </div>
         ) : null}
         <br />
 
@@ -167,7 +175,9 @@ function UserSignup() {
           className="user-signup-textarea"
         />
         {formik.touched.car_info && formik.errors.car_info ? (
-          <div className="user-signup-error-message">{formik.errors.car_info}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.car_info}
+          </div>
         ) : null}
         <br />
 
@@ -184,7 +194,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.password && formik.errors.password ? (
-          <div className="user-signup-error-message">{formik.errors.password}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.password}
+          </div>
         ) : null}
         <br />
 
@@ -201,7 +213,9 @@ function UserSignup() {
           className="user-signup-input"
         />
         {formik.touched.password2 && formik.errors.password2 ? (
-          <div className="user-signup-error-message">{formik.errors.password2}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.password2}
+          </div>
         ) : null}
         <br />
 
@@ -219,17 +233,25 @@ function UserSignup() {
           className="user-signup-file-input"
         />
         {formik.touched.profile_picture && formik.errors.profile_picture ? (
-          <div className="user-signup-error-message">{formik.errors.profile_picture}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.profile_picture}
+          </div>
         ) : null}
         <br />
 
-        <button type="submit" className="user-signup-button" disabled={!formik.isValid}>
+        <button
+          type="submit"
+          className="user-signup-button"
+          disabled={!formik.isValid}
+        >
           Sign Up
         </button>
       </form>
       {message && <p className="user-signup-message">{message}</p>}
       <div>
-        <Link to="/" className="user-signup-link">Already have an Account? Login here</Link>
+        <Link to="/" className="user-signup-link">
+          Already have an Account? Login here
+        </Link>
       </div>
     </div>
   );

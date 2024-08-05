@@ -23,22 +23,28 @@ function UserLogin() {
         .required("Email is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: async (values) => {
-      const response = await fetch("http://127.0.0.1:5555/user_auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify(values),
-      });
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        const response = await fetch("http://127.0.0.1:5555/user_auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(values),
+        });
 
-      const data = await response.json();
-      setMessage(data.msg);
+        const data = await response.json();
+        setMessage(data.msg);
 
-      if (response.ok) {
-        formik.resetForm();
-        navigate("/home");
+        if (response.ok) {
+          formik.resetForm();
+          navigate("/home");
+        }
+      } catch (error) {
+        setMessage("An error occurred. Please try again.");
+      } finally {
+        setSubmitting(false);
       }
     },
   });

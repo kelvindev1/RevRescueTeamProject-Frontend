@@ -23,10 +23,10 @@ function MechanicLogin() {
         .required("Email is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: async (values) => {
+    onSubmit: async (values, { setSubmitting }) => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:5555/mechanic_auth/login",
+          "http://127.0.0.1:5555/mechanic_auth/login", // Make sure this URL points to the correct endpoint for mechanics
           {
             method: "POST",
             headers: {
@@ -42,10 +42,14 @@ function MechanicLogin() {
 
         if (response.ok) {
           formik.resetForm();
-          navigate("/mechanichomepage");
+          navigate("/mechanichomepage"); // Redirect to the appropriate page for mechanics
+        } else {
+          setMessage("Invalid credentials. Please try again.");
         }
       } catch (error) {
         setMessage("An error occurred. Please try again.");
+      } finally {
+        setSubmitting(false);
       }
     },
   });

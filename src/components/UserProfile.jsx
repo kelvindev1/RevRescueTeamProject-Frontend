@@ -1,5 +1,5 @@
 import React from "react";
-import "./Profile.css";
+import "./UserProfile.css";
 import ProfileHeader from "./ProfileHeader";
 import userimage from "/src/assets/images/image.png";
 import { FaCarBattery, FaLifeRing, FaWrench } from "react-icons/fa";
@@ -19,17 +19,16 @@ const expertises = [
   },
 ];
 
-function Profile() {
+function UserProfile() {
   return (
     <>
       <div className="profile">
         <ProfileHeader />
-
         <div className="user--profile">
           <div className="user--detail">
             <img src={userimage} alt="user" />
             <h3 className="username">Kelvin Mutugi</h3>
-            <span className="profession">Mechanic</span>
+            <span className="profession">User</span>
           </div>
 
           <div className="user-expertises">
@@ -51,4 +50,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserProfile;

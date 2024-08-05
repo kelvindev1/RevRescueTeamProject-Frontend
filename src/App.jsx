@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home";
+import UserHomePage from "./components/UserHomePage";
 import Footer from "./components/Footer";
 import AdminLogin from "./components/AdminLogin";
 import AdminSignup from "./components/AdminSignup";
@@ -34,7 +34,7 @@ function App() {
             element={
               <>
                 {" "}
-                <Home /> <Footer />{" "}
+                <UserHomePage /> <Footer />{" "}
               </>
             }
           />

@@ -1,5 +1,6 @@
 .profile {
     flex: 1;
+    overflow-y: auto;
 }
 
 .profile--header {

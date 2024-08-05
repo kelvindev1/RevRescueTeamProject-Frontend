@@ -1,14 +1,25 @@
 .dashboard {
     display: flex;
+    flex: 1;
+    height: 100vh;
     gap: 20px;
 }
 
 .dashboard--content {
     background: #fff;
     flex: 1;
+    overflow-y: auto;
     border-radius: 20px;
-    padding: 2rem;
     display: flex;
     gap: 1.5rem;
     justify-content: space-between;
+    max-width: 100%;
+
+}
+
+.homepage-userprofile {
+    display: flex;
+    flex: -1;
+    width: 18%;
+
 }

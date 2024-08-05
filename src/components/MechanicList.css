@@ -1,49 +1,65 @@
-.list--header {
-    display: flex;
-    margin: 2rem 0;
-    justify-content: space-between;
+.mechanic-list {
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.list--header h2 {
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.list-header h2 {
     color: #525252;
 }
 
-.list--header select {
-    border-radius: 10px;
-    border: none;
-    padding: 1px 20px;
-    border: 1px solid blue;
-    color: #526d82;
-}
-
-.list--container {
+.list-container {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.list {
+.list-item {
     display: flex;
-    padding-right: 10px;
-    align-items: center;
-    justify-content: space-between;
-    transition: 0.3s ease-in-out;
+    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.list:hover {
-    background: #dde6ed;
-    border-radius: 10px;
-}
-
-.mechanic--detail {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.mechanic-detail {
     color: #526d82;
+    flex-direction: column;
 }
 
-.mechanic--detail img {
-    width: 50px;
-    background: #dde6ed;
+.mechanic-image {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.mechanic-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.mechanic-todo {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.mechanic-todo:hover {
+    background-color: #0056b3;
 }

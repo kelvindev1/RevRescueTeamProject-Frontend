@@ -14,6 +14,8 @@ import UsersList from "./components/UsersList";
 import MechanicsList from "./components/MechanicsList";
 import MechanicHomePage from "./components/MechanicHomePage";
 import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
+import UserProfile from "./components/UserProfile";
+import ServiceList from "./components/ServiceList";
 
 function App() {
   return (
@@ -50,6 +52,11 @@ function App() {
             path="/mechanichomepage/reviews"
             element={<MechanicReviewsReceived />}
           />
+          <Route
+            path="/profile"
+            element={<UserProfile id={localStorage.getItem("userId")} />}
+          />
+          <Route path="/home/services" element={<ServiceList />} />
         </Routes>
       </Router>
     </>

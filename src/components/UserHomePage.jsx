@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import UserSidebar from "./UserSidebar";
 import UserContent from "./UserContent";
 import UserProfile from "./UserProfile";
 import "./UserHomePage.css";
 
 function UserHomePage() {
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId);
+    }
+  }, []);
+
+  if (!userId) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <div className="dashboard">
@@ -13,7 +24,7 @@ function UserHomePage() {
           <UserContent />
         </div>
         <div className="homepage-userprofile">
-          <UserProfile />
+          <UserProfile id={userId} />
         </div>
       </div>
     </>

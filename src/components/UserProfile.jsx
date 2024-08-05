@@ -1,53 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
 import "./UserProfile.css";
-import ProfileHeader from "./ProfileHeader";
-import userimage from "/src/assets/images/image.png";
-import { FaCarBattery, FaLifeRing, FaWrench } from "react-icons/fa";
 
-const expertises = [
-  {
-    title: "Engine Repair",
-    icon: <FaWrench />,
-  },
-  {
-    title: "Car Wiring",
-    icon: <FaCarBattery />,
-  },
-  {
-    title: "Tyres",
-    icon: <FaLifeRing />,
-  },
-];
+function UserProfile({ id }) {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
-function UserProfile() {
+  useEffect(() => {
+    console.log("UserProfile rendered with ID:", id);
+    if (id) {
+      console.log("Fetching user data for ID:", id);
+      axios
+        .get(`http://127.0.0.1:5555/users/${id}`)
+        .then((response) => {
+          console.log("User data received:", response.data);
+          setUser(response.data);
+          setError(null);
+        })
+        .catch((error) => {
+          console.error("There was an error fetching the user data!", error);
+          setError("There was an error fetching the user data!");
+        });
+    } else {
+      console.warn("No ID provided to UserProfile");
+      setError("No user ID provided.");
+    }
+  }, [id]);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <div className="profile">
-        <ProfileHeader />
-        <div className="user--profile">
-          <div className="user--detail">
-            <img src={userimage} alt="user" />
-            <h3 className="username">Kelvin Mutugi</h3>
-            <span className="profession">User</span>
-          </div>
-
-          <div className="user-expertises">
-            {expertises.map((expertise, index) => (
-              <div key={index} className="expertise">
-                <div className="expertise--detail">
-                  <div className="expertise--cover">{expertise.icon}</div>
-                  <div className="expertise-name">
-                    <h5 className="title">{expertise.title}</h5>
-                  </div>
-                </div>
-                <div className="action">:</div>
-              </div>
-            ))}
-          </div>
+    <div className="user-profile">
+      <div className="profile-header">
+        <h2>User Profile</h2>
+      </div>
+      <div className="profile-container">
+        <div className="profile-detail">
+          <img
+            src={user.profile_picture}
+            alt={`${user.first_name} ${user.last_name}`}
+            className="profile-image"
+          />
+          <h2>{`${user.first_name} ${user.last_name}`}</h2>
+          <p>
+            <strong>Username:</strong> {user.username}
+          </p>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Phone Number:</strong> {user.phone_number}
+          </p>
+          <p>
+            <strong>Expertise:</strong> {user.expertise}
+          </p>
+          <p>
+            <strong>Experience:</strong> {user.experience_years} years
+          </p>
+          <p>
+            <strong>Bio:</strong> {user.bio}
+          </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
+
+UserProfile.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default UserProfile;

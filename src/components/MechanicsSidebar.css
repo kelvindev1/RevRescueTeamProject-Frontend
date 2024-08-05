@@ -1,0 +1,45 @@
+.mechanic-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+    width: 10%;
+    position: relative;
+    margin-left: 20px;
+}
+
+.mechanic-logo {
+    text-align: center;
+    color: #273774;
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+.mechanic-logo-icon {
+    font-size: 1.8rem;
+}
+
+.mechanic-menu--list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mechanic-menu--list .item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    color: #273774;
+}
+
+.mechanic-menu--list .item:hover,
+.active {
+    background: #273774;
+    color: #dde6ed !important;
+}

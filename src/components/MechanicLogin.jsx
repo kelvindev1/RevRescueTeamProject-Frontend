@@ -26,7 +26,7 @@ function MechanicLogin() {
     onSubmit: async (values, { setSubmitting }) => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:5555/mechanic_auth/login", // Make sure this URL points to the correct endpoint for mechanics
+          "http://127.0.0.1:5555/mechanic_auth/login",
           {
             method: "POST",
             headers: {
@@ -42,7 +42,7 @@ function MechanicLogin() {
 
         if (response.ok) {
           formik.resetForm();
-          navigate("/mechanichomepage"); // Redirect to the appropriate page for mechanics
+          navigate("/mechanichomepage");
         } else {
           setMessage("Invalid credentials. Please try again.");
         }

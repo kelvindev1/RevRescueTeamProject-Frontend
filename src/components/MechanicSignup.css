@@ -1,0 +1,83 @@
+/* MechanicSignup container styling */
+.mechanic-signup {
+    max-width: 500px; /* Adjust as needed */
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* MechanicSignup title styling */
+.mechanic-signup__title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* General input field styling */
+.mechanic-signup__input,
+.mechanic-signup__textarea {
+    padding: 12px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #ffffff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%; /* Full width for input fields */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+/* Focus state for input fields */
+.mechanic-signup__input:focus,
+.mechanic-signup__textarea:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* File input styling */
+.mechanic-signup__input[type="file"] {
+    margin-bottom: 20px;
+}
+
+/* Submit button styling */
+.mechanic-signup__button {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%; /* Full width for the button */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+/* Hover state for button */
+.mechanic-signup__button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Error message styling */
+.mechanic-signup__error,
+.mechanic-signup__message {
+    color: #d9534f; /* Bootstrap's danger color for consistency */
+    font-size: 14px;
+    margin-top: -12px;
+}
+
+/* Link styling */
+.mechanic-signup__link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.mechanic-signup__link:hover {
+    text-decoration: underline;
+}

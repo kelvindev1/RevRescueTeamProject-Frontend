@@ -13,56 +13,35 @@ import AdminManager from "./components/AdminManager";
 import UsersList from "./components/UsersList";
 import MechanicsList from "./components/MechanicsList";
 import MechanicHomePage from "./components/MechanicHomePage";
-import MechanicReviewsReceived from "./components/Mecha
-import Reviews from"./comp
+import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
+import Reviews from "./components/Reviews";
 import UserProfile from "./components/UserProfile";
 import ServiceList from "./components/ServiceList";
-
+import Notifications from "./components/Notification";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                {" "}
-                <AdminLogin /> <UserLogin /> <MechanicLogin />{" "}
-              </>
-            }
-          />
-          <Route
-            path="/home"
-            element={
-              <>
-                {" "}
-                <UserHomePage /> <Footer />{" "}
-              </>
-            }
-          />
-          <Route path="/admin_register" element={<AdminSignup />} />
-          <Route path="/user_register" element={<UserSignup />} />
-          <Route path="/mechanic_register" element={<MechanicSignup />} />
-          <Route path="/adminhomepage" element={<AdminHomePage />} />
-          <Route path="/adminhomepage/admins" element={<AdminManager />} />
-          <Route path="/adminhomepage/users" element={<UsersList />} />
-          <Route path="/adminhomepage/mechanics" element={<MechanicsList />} />
-          <Route path="/mechanichomepage" element={<MechanicHomePage />} />
-          <Route
-            path="/mechanichomepage/reviews"
-            element={<MechanicReviewsReceived />}
-          />
-          <Route path="/reviews" element={<Reviews/>}/>
-          <Route
-            path="/profile"
-            element={<UserProfile id={localStorage.getItem("userId")} />}
-          />
-          <Route path="/home/services" element={<ServiceList />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<UserLogin />} />
+        <Route path="/admin_login" element={<AdminLogin />} />
+        <Route path="/mechanic_login" element={<MechanicLogin />} />
+        <Route path="/home" element={<><UserHomePage /><Footer /></>} />
+        <Route path="/admin_register" element={<AdminSignup />} />
+        <Route path="/user_register" element={<UserSignup />} />
+        <Route path="/mechanic_register" element={<MechanicSignup />} />
+        <Route path="/adminhomepage" element={<AdminHomePage />} />
+        <Route path="/adminhomepage/admins" element={<AdminManager />} />
+        <Route path="/adminhomepage/users" element={<UsersList />} />
+        <Route path="/adminhomepage/mechanics" element={<MechanicsList />} />
+        <Route path="/mechanichomepage" element={<MechanicHomePage />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/mechanichomepage/reviews" element={<MechanicReviewsReceived />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/profile" element={<UserProfile id={localStorage.getItem("userId")} />} />
+        <Route path="/home/services" element={<ServiceList />} />
+      </Routes>
+    </Router>
   );
 }
 

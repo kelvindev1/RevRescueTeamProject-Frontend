@@ -14,7 +14,7 @@ function UserHomePage() {
   }, []);
 
   if (!userId) {
-    return <div>Loading...</div>;
+    return <div>Not logged in</div>;
   }
   return (
     <>

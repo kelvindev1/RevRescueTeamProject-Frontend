@@ -7,17 +7,10 @@ const api = axios.create({
   baseURL: "http://127.0.0.1:5555",
 });
 
-function Reviews() {
+function AdminReviewsManager() {
   const [reviews, setReviews] = useState([]);
   const [users, setUsers] = useState([]);
   const [mechanics, setMechanics] = useState([]);
-  const [newReview, setNewReview] = useState({
-    user_id: "",
-    mechanic_id: "",
-    rating: 0,
-    feedback: "",
-  });
-
   const [searchReviewer, setSearchReviewer] = useState("");
   const [searchMechanic, setSearchMechanic] = useState("");
 
@@ -64,28 +57,12 @@ function Reviews() {
     ));
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewReview({ ...newReview, [name]: value });
-  };
-
-  const handleRatingChange = (rating) => {
-    setNewReview({ ...newReview, rating });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDelete = async (reviewId) => {
     try {
-      const response = await api.post("/reviews", newReview);
-      setReviews([...reviews, response.data]);
-      setNewReview({
-        user_id: "",
-        mechanic_id: "",
-        rating: 0,
-        feedback: "",
-      });
+      await api.delete(`/reviews/${reviewId}`);
+      setReviews(reviews.filter((review) => review.id !== reviewId));
     } catch (error) {
-      console.error("Error adding review:", error);
+      console.error("Error deleting review:", error);
     }
   };
 
@@ -133,63 +110,6 @@ function Reviews() {
           />
         </label>
       </div>
-      <form onSubmit={handleSubmit} className="review-form">
-        <label>
-          User:
-          <select
-            name="user_id"
-            value={newReview.user_id}
-            onChange={handleInputChange}
-          >
-            <option value="">Select User</option>
-            {users.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.first_name} {user.last_name}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Mechanic:
-          <select
-            name="mechanic_id"
-            value={newReview.mechanic_id}
-            onChange={handleInputChange}
-          >
-            <option value="">Select Mechanic</option>
-            {mechanics.map((mechanic) => (
-              <option key={mechanic.id} value={mechanic.id}>
-                {mechanic.first_name} {mechanic.last_name}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        <label>
-          Rating:
-          <div className="stars">
-            {Array.from({ length: 5 }, (_, index) => (
-              <FaStar
-                key={index}
-                color={index < newReview.rating ? "#ffc107" : "#e4e5e9"}
-                onClick={() => handleRatingChange(index + 1)}
-              />
-            ))}
-          </div>
-        </label>
-
-        <label>
-          Feedback:
-          <textarea
-            name="feedback"
-            value={newReview.feedback}
-            onChange={handleInputChange}
-          />
-        </label>
-
-        <button type="submit">Add Review</button>
-      </form>
 
       <div className="review-cards">
         {filteredReviews.length === 0 ? (
@@ -218,6 +138,12 @@ function Reviews() {
                 <div className="rating">
                   <div className="stars">{renderStars(review.rating)}</div>
                 </div>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(review.id)}
+                >
+                  &times;
+                </button>
               </div>
             );
           })
@@ -227,4 +153,4 @@ function Reviews() {
   );
 }
 
-export default Reviews;
+export default AdminReviewsManager;

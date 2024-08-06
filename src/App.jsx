@@ -16,6 +16,7 @@ import MechanicHomePage from "./components/MechanicHomePage";
 import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
 import Reviews from "./components/Reviews";
 import ServiceList from "./components/ServiceList";
+import AdminReviewsManager from "./components/AdminReviewsManager";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
           <Route path="/mechanic_register" element={<MechanicSignup />} />
           <Route path="/adminhomepage" element={<AdminHomePage />} />
           <Route path="/adminhomepage/admins" element={<AdminManager />} />
+          <Route
+            path="/adminhomepage/reviews"
+            element={<AdminReviewsManager />}
+          />
           <Route path="/adminhomepage/users" element={<UsersList />} />
           <Route path="/adminhomepage/mechanics" element={<MechanicsList />} />
           <Route path="/mechanichomepage" element={<MechanicHomePage />} />
@@ -52,7 +57,7 @@ function App() {
             path="/mechanichomepage/reviews"
             element={<MechanicReviewsReceived />}
           />
-          <Route path="/reviews" element={<Reviews />} />
+          <Route path="home/reviews" element={<Reviews />} />
           <Route path="/home/services" element={<ServiceList />} />
         </Routes>
       </Router>

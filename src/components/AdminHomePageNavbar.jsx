@@ -56,6 +56,17 @@ function AdminHomePageNavbar() {
       >
         Mechanics
       </Link>
+      <Link
+        to={"/adminhomepage/reviews"}
+        style={{
+          margin: "10px",
+          padding: "4px",
+          textDecoration: "none",
+          fontSize: "20px",
+        }}
+      >
+        Reviews
+      </Link>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import {
   BiStats,
   BiHelpCircle,
 } from "react-icons/bi";
-import { FaCar, FaWrench } from "react-icons/fa";
+import { FaCar, FaWrench, FaStar } from "react-icons/fa";
 
 function UserSidebar() {
   return (
@@ -37,6 +37,10 @@ function UserSidebar() {
         <a href="#" className="item">
           <BiMessage className="icon" />
           Message
+        </a>
+        <a href="/home/reviews" className="item">
+          <FaStar className="icon" />
+          Review
         </a>
         <a href="#" className="item">
           <BiHelpCircle className="icon" />

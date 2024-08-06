@@ -121,6 +121,12 @@ function AdminReviewsManager() {
 
             return (
               <div className="review-card" key={review.id}>
+                <button
+                  className="review-admin-delete-button"
+                  onClick={() => handleDelete(review.id)}
+                >
+                  &times;
+                </button>
                 <p>{review.feedback}</p>
                 <p>{new Date(review.created_at).toLocaleString()}</p>
                 <p>
@@ -138,12 +144,6 @@ function AdminReviewsManager() {
                 <div className="rating">
                   <div className="stars">{renderStars(review.rating)}</div>
                 </div>
-                <button
-                  className="delete-button"
-                  onClick={() => handleDelete(review.id)}
-                >
-                  &times;
-                </button>
               </div>
             );
           })

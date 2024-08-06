@@ -1,6 +1,7 @@
 .mechanic-list {
     margin: 0 auto;
     padding: 20px;
+    display: flex;
 }
 
 .list-header {

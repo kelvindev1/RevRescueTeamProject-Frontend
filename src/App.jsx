@@ -17,6 +17,7 @@ import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
 import Reviews from "./components/Reviews";
 import ServiceList from "./components/ServiceList";
 import AdminReviewsManager from "./components/AdminReviewsManager";
+import Notifications from "./components/Notifications";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           />
           <Route path="home/reviews" element={<Reviews />} />
           <Route path="/home/services" element={<ServiceList />} />
+          <Route path="/notifications" element={<Notifications />} />
         </Routes>
       </Router>
     </>

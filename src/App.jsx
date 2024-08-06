@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home";
+import UserHomePage from "./components/UserHomePage";
 import Footer from "./components/Footer";
 import AdminLogin from "./components/AdminLogin";
 import AdminSignup from "./components/AdminSignup";
@@ -13,8 +13,10 @@ import AdminManager from "./components/AdminManager";
 import UsersList from "./components/UsersList";
 import MechanicsList from "./components/MechanicsList";
 import MechanicHomePage from "./components/MechanicHomePage";
-import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
-import Reviews from"./components/Reviews";
+import MechanicReviewsReceived from "./components/Mecha
+import Reviews from"./comp
+import UserProfile from "./components/UserProfile";
+import ServiceList from "./components/ServiceList";
 
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
             element={
               <>
                 {" "}
-                <Home /> <Footer />{" "}
+                <UserHomePage /> <Footer />{" "}
               </>
             }
           />
@@ -53,6 +55,11 @@ function App() {
             element={<MechanicReviewsReceived />}
           />
           <Route path="/reviews" element={<Reviews/>}/>
+          <Route
+            path="/profile"
+            element={<UserProfile id={localStorage.getItem("userId")} />}
+          />
+          <Route path="/home/services" element={<ServiceList />} />
         </Routes>
       </Router>
     </>

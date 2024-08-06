@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sidebar.css";
+import "./UserSidebar.css";
 import {
   BiHome,
   BiMessage,
@@ -9,7 +9,7 @@ import {
 } from "react-icons/bi";
 import { FaCar, FaWrench } from "react-icons/fa";
 
-function Sidebar() {
+function UserSidebar() {
   return (
     <div className="menu">
       <div className="logo">
@@ -22,9 +22,9 @@ function Sidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
-        <a href="#" className="item">
+        <a href="home/services" className="item">
           <FaWrench className="icon" />
-          Service
+          Services
         </a>{" "}
         <a href="#" className="item">
           <BiSolidReport className="icon" />
@@ -47,4 +47,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default UserSidebar;

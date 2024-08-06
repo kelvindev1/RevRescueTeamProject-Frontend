@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
+import "./UserSignup.css";
 
 function UserSignup() {
   const [message, setMessage] = useState("");
@@ -66,8 +67,8 @@ function UserSignup() {
   });
 
   return (
-    <div>
-      <h1>User Signup</h1>
+    <div className="user-signup-container">
+      <h1 className="user-signup-title">User Signup</h1>
       <form onSubmit={formik.handleSubmit}>
         <input
           id="first_name"
@@ -79,9 +80,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.first_name}
+          className="user-signup-input"
         />
         {formik.touched.first_name && formik.errors.first_name ? (
-          <div>{formik.errors.first_name}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.first_name}
+          </div>
         ) : null}
         <br />
 
@@ -95,9 +99,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.last_name}
+          className="user-signup-input"
         />
         {formik.touched.last_name && formik.errors.last_name ? (
-          <div>{formik.errors.last_name}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.last_name}
+          </div>
         ) : null}
         <br />
 
@@ -111,9 +118,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
+          className="user-signup-input"
         />
         {formik.touched.username && formik.errors.username ? (
-          <div>{formik.errors.username}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.username}
+          </div>
         ) : null}
         <br />
 
@@ -127,9 +137,10 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          className="user-signup-input"
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div className="user-signup-error-message">{formik.errors.email}</div>
         ) : null}
         <br />
 
@@ -143,9 +154,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone_number}
+          className="user-signup-input"
         />
         {formik.touched.phone_number && formik.errors.phone_number ? (
-          <div>{formik.errors.phone_number}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.phone_number}
+          </div>
         ) : null}
         <br />
 
@@ -158,9 +172,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.car_info}
+          className="user-signup-textarea"
         />
         {formik.touched.car_info && formik.errors.car_info ? (
-          <div>{formik.errors.car_info}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.car_info}
+          </div>
         ) : null}
         <br />
 
@@ -174,9 +191,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          className="user-signup-input"
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.password}
+          </div>
         ) : null}
         <br />
 
@@ -190,9 +210,12 @@ function UserSignup() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password2}
+          className="user-signup-input"
         />
         {formik.touched.password2 && formik.errors.password2 ? (
-          <div>{formik.errors.password2}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.password2}
+          </div>
         ) : null}
         <br />
 
@@ -207,19 +230,28 @@ function UserSignup() {
               event.currentTarget.files[0]
             )
           }
+          className="user-signup-file-input"
         />
         {formik.touched.profile_picture && formik.errors.profile_picture ? (
-          <div>{formik.errors.profile_picture}</div>
+          <div className="user-signup-error-message">
+            {formik.errors.profile_picture}
+          </div>
         ) : null}
         <br />
 
-        <button type="submit" disabled={!formik.isValid}>
+        <button
+          type="submit"
+          className="user-signup-button"
+          disabled={!formik.isValid}
+        >
           Sign Up
         </button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="user-signup-message">{message}</p>}
       <div>
-        <Link to="/">Already have an Account? Login here</Link>
+        <Link to="/" className="user-signup-link">
+          Already have an Account? Login here
+        </Link>
       </div>
     </div>
   );

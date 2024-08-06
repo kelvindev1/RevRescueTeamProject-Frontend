@@ -14,6 +14,8 @@ import UsersList from "./components/UsersList";
 import MechanicsList from "./components/MechanicsList";
 import MechanicHomePage from "./components/MechanicHomePage";
 import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
+import Reviews from"./components/Reviews";
+
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
             path="/mechanichomepage/reviews"
             element={<MechanicReviewsReceived />}
           />
+          <Route path="/reviews" element={<Reviews/>}/>
         </Routes>
       </Router>
     </>

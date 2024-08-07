@@ -6,3 +6,5 @@ formik
 yup
 bootstrap
 prop-types
+socket.io-client
+express socket.io

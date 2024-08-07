@@ -1,0 +1,155 @@
+:root {
+    --international-orange-engineering: hsl(1, 91%, 37%);
+    --cadet-blue-creyola: hsl(222, 14%, 69%);
+    --oxford-blue-1: hsl(222, 47%, 15%);
+    --oxford-blue-2: hsl(222, 44%, 14%);
+    --oxford-blue-3: hsl(222, 50%, 11%);
+    --sonic-silver: hsl(0, 0%, 44%);
+    --space-cadet: hsl(222, 44%, 18%);
+    --pastel-pink: hsl(1, 53%, 75%);
+    --eerie-black: hsl(0, 0%, 15%);
+    --light-gray: hsl(0, 0%, 80%);
+    --white: hsl(0, 0%, 100%);
+    --ff-chakra-petch: 'Chakra Petch', sans-serif;
+    --fs-1: 3.5rem;
+    --fs-2: 2.4rem;
+    --fs-3: 2.4rem;
+    --fs-4: 1.8rem;
+    --fs-5: 1.4rem;
+    --fs-6: 1.2rem;
+    --section-padding: 60px;
+    --shadow: 0px 0px 100px 0px hsl(216, 9%, 90%);
+    --radius-pill: 100px;
+    --radius-circle: 50%;
+    --transition: 0.25s ease;
+    --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
+}
+
+.hero-container-width {
+    width: 100%;
+
+
+}
+
+.hero {
+    padding-block: var(--section-padding);
+}
+
+.has-bg-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+.hero .container {
+    max-width: 1228px;
+}
+
+.hero-content {
+    max-width: 520px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.section-subtitle.\:dark {
+    color: var(--white);
+}
+
+.section-subtitle {
+    max-width: max-content;
+    font-family: var(--ff-chakra-petch);
+    font-size: var(--fs-5);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    margin-block-end: 12px;
+    margin-inline: auto;
+}
+
+.section-subtitle::before {
+    content: "";
+    display: inline-block;
+    height: 15px;
+    width: 30px;
+    margin-block-end: -2px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+
+.section-subtitle.\:dark::before {
+    background-image: url('../images/text-bars-light.png');
+}
+
+.section-title {
+    text-align: center;
+}
+
+.h1 {
+    color: var(--white);
+    font-size: var(--fs-2);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-family: var(--ff-chakra-petch);
+    font-weight: var(--fw-700);
+    text-transform: uppercase;
+}
+
+.section-text {
+    color: var(--white);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.hero-btn {
+    background-color: var(--international-orange-engineering);
+    color: var(--white);
+    max-width: max-content;
+    font-family: var(--ff-chakra-petch);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+    text-decoration: none;
+    margin-top: 20px;
+    display: flex;
+}
+
+.hero-btn:is(:hover, :focus-visible) {
+    transform: translateY(-5px);
+    background-color: var(--oxford-blue-3);
+    border-color: var(--white);
+}
+
+@keyframes moving {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.move-anim {
+    animation: moving 2s infinite alternate;
+}
+
+
+.hero-banner {
+    --width: 1228;
+    --height: 650;
+    margin-top: 40px;
+}
+
+.hero-banner img {
+    width: var(--width);
+    height: var(--height);
+
+}

@@ -22,7 +22,7 @@ function MechanicsSidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
-        <a href="#" className="item">
+        <a href="/mechanichomepage/chat" className="item">
           <BiMessage className="icon" />
           Message
         </a>

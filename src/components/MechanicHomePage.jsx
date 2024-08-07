@@ -3,7 +3,7 @@ import MechanicHomePageNavbar from "./MechanicHomePageNavbar";
 import MechanicsSidebar from "./MechanicsSidebar";
 import "./MechanicHomepage.css";
 
-function MechanicHomepage() {
+function MechanicHomePage() {
   return (
     <>
       <MechanicHomePageNavbar />
@@ -24,4 +24,4 @@ function MechanicHomepage() {
   );
 }
 
-export default MechanicHomepage;
+export default MechanicHomePage;

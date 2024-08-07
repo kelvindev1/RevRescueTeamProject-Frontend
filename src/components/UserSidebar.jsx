@@ -22,10 +22,18 @@ function UserSidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
-        <a href="home/services" className="item">
+        <a href="/home/mechanics" className="item">
           <FaWrench className="icon" />
-          Services
+          Mechanics
         </a>{" "}
+        <a href="/home/chat" className="item">
+          <BiMessage className="icon" />
+          Message
+        </a>
+        <a href="/home/reviews" className="item">
+          <FaStar className="icon" />
+          Review
+        </a>
         <a href="#" className="item">
           <BiSolidReport className="icon" />
           Report
@@ -33,14 +41,6 @@ function UserSidebar() {
         <a href="#" className="item">
           <BiStats className="icon" />
           Stats
-        </a>
-        <a href="#" className="item">
-          <BiMessage className="icon" />
-          Message
-        </a>
-        <a href="/home/reviews" className="item">
-          <FaStar className="icon" />
-          Review
         </a>
         <a href="#" className="item">
           <BiHelpCircle className="icon" />

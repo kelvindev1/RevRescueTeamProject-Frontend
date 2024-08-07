@@ -16,8 +16,11 @@ import MechanicHomePage from "./components/MechanicHomePage";
 import MechanicReviewsReceived from "./components/MechanicReviewsReceived";
 import Reviews from "./components/Reviews";
 import ServiceList from "./components/ServiceList";
+import MechanicList from "./components/MechanicList";
 import AdminReviewsManager from "./components/AdminReviewsManager";
 import Notifications from "./components/Notifications";
+import UserSideChat from "./components/UserSideChat";
+import MechanicSideChat from "./components/MechanicSideChat";
 
 function App() {
   return (
@@ -38,7 +41,8 @@ function App() {
             element={
               <>
                 {" "}
-                <UserHomePage /> <Footer />{" "}
+                <UserHomePage />
+                <Footer />{" "}
               </>
             }
           />
@@ -60,7 +64,10 @@ function App() {
           />
           <Route path="home/reviews" element={<Reviews />} />
           <Route path="/home/services" element={<ServiceList />} />
+          <Route path="/home/mechanics" element={<MechanicList />} />
           <Route path="/notifications" element={<Notifications />} />
+          <Route path="/home/chat" element={<UserSideChat />} />
+          <Route path="/mechanichomepage/chat" element={<MechanicSideChat />} />
         </Routes>
       </Router>
     </>

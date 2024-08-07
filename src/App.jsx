@@ -21,6 +21,8 @@ import AdminReviewsManager from "./components/AdminReviewsManager";
 import Notifications from "./components/Notifications";
 import UserSideChat from "./components/UserSideChat";
 import MechanicSideChat from "./components/MechanicSideChat";
+import Hero from "./components/Hero";
+import Hservice from "./components/Hservice";
 
 function App() {
   return (
@@ -32,6 +34,16 @@ function App() {
             element={
               <>
                 {" "}
+                <Hero />
+                <Hservice />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/logins"
+            element={
+              <>
                 <AdminLogin /> <UserLogin /> <MechanicLogin />{" "}
               </>
             }

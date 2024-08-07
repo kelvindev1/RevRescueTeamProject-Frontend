@@ -2,7 +2,12 @@ import React from "react";
 import "./Hero.css";
 
 const Hero = () => (
-  <div className="hero-container-width">
+  <>
+    <div className="logins-a-hero">
+      <a href="/logins" className="hero-logins-btn">
+        <span className="span">Register With US</span>
+      </a>
+    </div>
     <section
       className="hero has-bg-image"
       aria-label="home"
@@ -21,7 +26,7 @@ const Hero = () => (
             maintenance
           </p>
 
-          <a href="home/services" className="hero-btn">
+          <a href="/home/services" className="hero-btn">
             <span className="span">Our Services</span>
           </a>
         </div>
@@ -35,7 +40,7 @@ const Hero = () => (
         </figure>
       </div>
     </section>
-  </div>
+  </>
 );
 
 export default Hero;

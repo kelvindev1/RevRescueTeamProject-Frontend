@@ -13,7 +13,7 @@
     --ff-chakra-petch: 'Chakra Petch', sans-serif;
     --fs-1: 3.5rem;
     --fs-2: 2.4rem;
-    --fs-3: 2.4rem;
+    --fs-3: 2.8rem;
     --fs-4: 1.8rem;
     --fs-5: 1.4rem;
     --fs-6: 1.2rem;
@@ -25,10 +25,33 @@
     --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
 }
 
-.hero-container-width {
-    width: 100%;
+.logins-a-hero {
+    position: fixed;
+    right: 20px;
+    z-index: 1000;
+}
 
+.hero-logins-btn {
+    background-color: var(--international-orange-engineering);
+    color: var(--white);
+    max-width: max-content;
+    font-family: var(--ff-chakra-petch);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+    text-decoration: none;
+    margin-bottom: -60px;
+}
 
+.hero-logins-btn:is(:hover, :focus-visible) {
+    transform: translateY(-5px);
+    background-color: var(--oxford-blue-3);
+    border-color: var(--white);
 }
 
 .hero {
@@ -118,7 +141,6 @@
     transition: var(--transition);
     text-decoration: none;
     margin-top: 20px;
-    display: flex;
 }
 
 .hero-btn:is(:hover, :focus-visible) {

@@ -1,12 +1,12 @@
 import React from "react";
 import "./UserContent.css";
-import Hero from "./Hero";
+import MechanicList from "./MechanicList";
 
 function UserContent() {
   return (
     <div>
       <div className="content">
-        <Hero />
+        <MechanicList />
       </div>
     </div>
   );

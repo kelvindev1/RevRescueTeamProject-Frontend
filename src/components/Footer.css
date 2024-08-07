@@ -38,11 +38,21 @@
 }
 
 .car-image {
-    width: 100%;
-    margin-right: 0%;
-    margin-left: -200px;
-
+    margin-top: -160px;
+    animation: moving 2s infinite alternate;
+    margin-left: -380px;
 }
+
+@keyframes moving {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(10px);
+    }
+}
+
 
 .right-section {
     width: 100%;
@@ -183,10 +193,4 @@
 
 .contact-item i {
     margin-right: 8px;
-}
-
-@media (max-width: 700px) {
-    .container {
-        flex-direction: column;
-    }
 }

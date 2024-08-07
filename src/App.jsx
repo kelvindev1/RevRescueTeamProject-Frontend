@@ -23,6 +23,7 @@ import UserSideChat from "./components/UserSideChat";
 import MechanicSideChat from "./components/MechanicSideChat";
 import Hero from "./components/Hero";
 import Hservice from "./components/Hservice";
+import HAbout from "./components/HAbout";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
                 {" "}
                 <Hero />
                 <Hservice />
+                <HAbout />
                 <Footer />
               </>
             }

@@ -1,0 +1,54 @@
+.about {
+    background-color: var(--space-cadet);
+    color: var(--white);
+    text-align: center;
+}
+
+.about-banner .w-100 {
+    width: 50%;
+    margin-top: 100px;
+}
+
+.about-banner,
+.about .section-text {
+    margin-inline: auto;
+}
+
+.about,
+.section-title {
+    color: var(--white);
+    text-align: left;
+}
+
+.about .section-text {
+    max-width: 600px;
+    font-size: 22px;
+    padding: 10px;
+    margin: 10px 0;
+    font-weight: normal;
+    line-height: 1.6;
+}
+
+.about-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    list-style: none;
+}
+
+.about-item {
+    background-color: var(--oxford-blue-2);
+    transition: var(--transition);
+    padding-block: 20px;
+    text-align: center;
+}
+
+.about-item:hover {
+    background-color: var(--international-orange-engineering);
+    transform: translateY(-8px);
+}
+
+.about-item .strong {
+    display: block;
+    line-height: 1.1;
+}

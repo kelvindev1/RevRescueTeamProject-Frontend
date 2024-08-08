@@ -20,19 +20,27 @@ function Reviews() {
 
   const [searchReviewer, setSearchReviewer] = useState("");
   const [searchMechanic, setSearchMechanic] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchReviews();
     fetchUsers();
     fetchMechanics();
-  }, []);
+    fetchReviews();
+  }, [searchReviewer, searchMechanic]);
 
   const fetchReviews = async () => {
     try {
-      const response = await api.get("/reviews");
+      const response = await api.get("/reviews", {
+        params: {
+          searchReviewer,
+          searchMechanic,
+        },
+      });
       setReviews(response.data);
+      setError(null);
     } catch (error) {
       console.error("Error fetching reviews:", error);
+      setError("There was an error fetching the reviews.");
     }
   };
 
@@ -89,26 +97,18 @@ function Reviews() {
     }
   };
 
-  const filteredReviews = reviews.filter((review) => {
-    const reviewer = getUserById(review.user_id);
-    const mechanic = getMechanicById(review.mechanic_id);
+  const handleSearchChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "searchReviewer") {
+      setSearchReviewer(value);
+    } else if (name === "searchMechanic") {
+      setSearchMechanic(value);
+    }
+  };
 
-    const reviewerName = reviewer
-      ? `${reviewer.first_name} ${reviewer.last_name}`
-      : "";
-    const mechanicName = mechanic
-      ? `${mechanic.first_name} ${mechanic.last_name}`
-      : "";
-
-    const reviewerMatch = reviewerName
-      .toLowerCase()
-      .includes(searchReviewer.toLowerCase());
-    const mechanicMatch = mechanicName
-      .toLowerCase()
-      .includes(searchMechanic.toLowerCase());
-
-    return reviewerMatch && mechanicMatch;
-  });
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
 
   return (
     <div className="review-container">
@@ -118,8 +118,9 @@ function Reviews() {
           Search by Reviewer:
           <input
             type="text"
+            name="searchReviewer"
             value={searchReviewer}
-            onChange={(e) => setSearchReviewer(e.target.value)}
+            onChange={handleSearchChange}
             placeholder="Enter reviewer name"
           />
         </label>
@@ -127,8 +128,9 @@ function Reviews() {
           Search by Mechanic:
           <input
             type="text"
+            name="searchMechanic"
             value={searchMechanic}
-            onChange={(e) => setSearchMechanic(e.target.value)}
+            onChange={handleSearchChange}
             placeholder="Enter mechanic name"
           />
         </label>
@@ -192,10 +194,10 @@ function Reviews() {
       </form>
 
       <div className="review-cards">
-        {filteredReviews.length === 0 ? (
+        {reviews.length === 0 ? (
           <div>No reviews available</div>
         ) : (
-          filteredReviews.map((review) => {
+          reviews.map((review) => {
             const reviewer = getUserById(review.user_id);
             const mechanic = getMechanicById(review.mechanic_id);
 

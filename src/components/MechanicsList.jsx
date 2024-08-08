@@ -3,6 +3,8 @@ import axios from "axios";
 import "./MechanicsList.css";
 import { BiSearch } from "react-icons/bi";
 
+const API_URL = "http://127.0.0.1:5555/mechanics";
+
 const MechanicsList = () => {
   const [mechanics, setMechanics] = useState([]);
   const [filteredMechanics, setFilteredMechanics] = useState([]);
@@ -11,11 +13,14 @@ const MechanicsList = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const fetchMechanics = async () => {
+    const fetchMechanics = async (query = "") => {
       try {
-        const response = await axios.get("http://127.0.0.1:5555/mechanics");
-        setMechanics(response.data);
-        setFilteredMechanics(response.data);
+        const response = await axios.get(API_URL, {
+          params: { search: query },
+        });
+        const mechanicsData = response.data;
+        setMechanics(mechanicsData);
+        setFilteredMechanics(mechanicsData);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -23,17 +28,8 @@ const MechanicsList = () => {
       }
     };
 
-    fetchMechanics();
-  }, []);
-
-  useEffect(() => {
-    const filtered = mechanics.filter(
-      (mechanic) =>
-        mechanic.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        mechanic.email.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredMechanics(filtered);
-  }, [searchQuery, mechanics]);
+    fetchMechanics(searchQuery);
+  }, [searchQuery]);
 
   const handleDelete = async (mechanicId) => {
     const confirmDelete = window.confirm(
@@ -41,9 +37,12 @@ const MechanicsList = () => {
     );
     if (confirmDelete) {
       try {
-        await axios.delete(`http://127.0.0.1:5555/mechanics/${mechanicId}`);
+        await axios.delete(`${API_URL}/${mechanicId}`);
         setMechanics(
           mechanics.filter((mechanic) => mechanic.id !== mechanicId)
+        );
+        setFilteredMechanics(
+          filteredMechanics.filter((mechanic) => mechanic.id !== mechanicId)
         );
       } catch (err) {
         console.error("Failed to delete mechanic:", err.message);
@@ -52,11 +51,9 @@ const MechanicsList = () => {
   };
 
   const getProfilePictureUrl = (profilePicture) => {
-    // If profilePicture starts with 'http', return it as is
-    if (profilePicture.startsWith("http")) {
+    if (profilePicture && profilePicture.startsWith("http")) {
       return profilePicture;
     }
-    // Otherwise, treat it as a local file
     return `http://127.0.0.1:5555/uploads/${profilePicture}`;
   };
 
@@ -78,40 +75,44 @@ const MechanicsList = () => {
       </div>
 
       <div className="mechanic-list">
-        {filteredMechanics.map((mechanic) => (
-          <div className="mechanic-card" key={mechanic.id}>
-            <img
-              src={getProfilePictureUrl(mechanic.profile_picture)}
-              alt={`${mechanic.first_name} ${mechanic.last_name}'s profile`}
-              className="profile-picture"
-            />
-            <h2>{mechanic.username}</h2>
-            <p>
-              <i>Name:</i> {mechanic.first_name} {mechanic.last_name}
-            </p>
-            <p>
-              <i>Email:</i> {mechanic.email}
-            </p>
-            <p>
-              <i>Phone:</i> {mechanic.phone_number}
-            </p>
-            <p>
-              <i>Expertise:</i> {mechanic.expertise}
-            </p>
-            <p>
-              <i>Experience:</i> {mechanic.experience_years}yrs
-            </p>
-            <p>
-              <i>Bio:</i> {mechanic.bio}
-            </p>
-            <button
-              className="delete-button-mechanic"
-              onClick={() => handleDelete(mechanic.id)}
-            >
-              &times;
-            </button>
-          </div>
-        ))}
+        {filteredMechanics.length > 0 ? (
+          filteredMechanics.map((mechanic) => (
+            <div className="mechanic-card" key={mechanic.id}>
+              <img
+                src={getProfilePictureUrl(mechanic.profile_picture)}
+                alt={`${mechanic.first_name} ${mechanic.last_name}'s profile`}
+                className="profile-picture"
+              />
+              <h2>{mechanic.username}</h2>
+              <p>
+                <i>Name:</i> {mechanic.first_name} {mechanic.last_name}
+              </p>
+              <p>
+                <i>Email:</i> {mechanic.email}
+              </p>
+              <p>
+                <i>Phone:</i> {mechanic.phone_number}
+              </p>
+              <p>
+                <i>Expertise:</i> {mechanic.expertise}
+              </p>
+              <p>
+                <i>Experience:</i> {mechanic.experience_years}yrs
+              </p>
+              <p>
+                <i>Bio:</i> {mechanic.bio}
+              </p>
+              <button
+                className="delete-button-mechanic"
+                onClick={() => handleDelete(mechanic.id)}
+              >
+                &times;
+              </button>
+            </div>
+          ))
+        ) : (
+          <p>No Mechanics found.</p>
+        )}
       </div>
     </div>
   );

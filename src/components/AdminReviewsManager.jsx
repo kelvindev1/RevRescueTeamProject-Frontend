@@ -15,14 +15,22 @@ function AdminReviewsManager() {
   const [searchMechanic, setSearchMechanic] = useState("");
 
   useEffect(() => {
-    fetchReviews();
     fetchUsers();
     fetchMechanics();
   }, []);
 
+  useEffect(() => {
+    fetchReviews();
+  }, [searchReviewer, searchMechanic]);
+
   const fetchReviews = async () => {
     try {
-      const response = await api.get("/reviews");
+      const response = await api.get("/reviews", {
+        params: {
+          searchReviewer: searchReviewer,
+          searchMechanic: searchMechanic,
+        },
+      });
       setReviews(response.data);
     } catch (error) {
       console.error("Error fetching reviews:", error);
@@ -58,34 +66,18 @@ function AdminReviewsManager() {
   };
 
   const handleDelete = async (reviewId) => {
-    try {
-      await api.delete(`/reviews/${reviewId}`);
-      setReviews(reviews.filter((review) => review.id !== reviewId));
-    } catch (error) {
-      console.error("Error deleting review:", error);
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this review?"
+    );
+    if (isConfirmed) {
+      try {
+        await api.delete(`/reviews/${reviewId}`);
+        setReviews(reviews.filter((review) => review.id !== reviewId));
+      } catch (error) {
+        console.error("Error deleting review:", error);
+      }
     }
   };
-
-  const filteredReviews = reviews.filter((review) => {
-    const reviewer = getUserById(review.user_id);
-    const mechanic = getMechanicById(review.mechanic_id);
-
-    const reviewerName = reviewer
-      ? `${reviewer.first_name} ${reviewer.last_name}`
-      : "";
-    const mechanicName = mechanic
-      ? `${mechanic.first_name} ${mechanic.last_name}`
-      : "";
-
-    const reviewerMatch = reviewerName
-      .toLowerCase()
-      .includes(searchReviewer.toLowerCase());
-    const mechanicMatch = mechanicName
-      .toLowerCase()
-      .includes(searchMechanic.toLowerCase());
-
-    return reviewerMatch && mechanicMatch;
-  });
 
   return (
     <div className="review-container">
@@ -112,10 +104,10 @@ function AdminReviewsManager() {
       </div>
 
       <div className="review-cards">
-        {filteredReviews.length === 0 ? (
+        {reviews.length === 0 ? (
           <div>No reviews available</div>
         ) : (
-          filteredReviews.map((review) => {
+          reviews.map((review) => {
             const reviewer = getUserById(review.user_id);
             const mechanic = getMechanicById(review.mechanic_id);
 

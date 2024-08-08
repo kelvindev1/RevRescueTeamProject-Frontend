@@ -3,6 +3,8 @@ import axios from "axios";
 import "./UsersList.css";
 import { BiSearch } from "react-icons/bi";
 
+const API_URL = "http://127.0.0.1:5555/users";
+
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -11,9 +13,11 @@ const UsersList = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchUsers = async (query = "") => {
       try {
-        const response = await axios.get("http://127.0.0.1:5555/users");
+        const response = await axios.get(API_URL, {
+          params: { search: query },
+        });
         const usersData = response.data;
         setUsers(usersData);
         setFilteredUsers(usersData);
@@ -24,17 +28,8 @@ const UsersList = () => {
       }
     };
 
-    fetchUsers();
-  }, []);
-
-  useEffect(() => {
-    const filtered = users.filter(
-      (user) =>
-        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredUsers(filtered);
-  }, [searchQuery, users]);
+    fetchUsers(searchQuery);
+  }, [searchQuery]);
 
   const handleDelete = async (userId) => {
     const confirmDelete = window.confirm(
@@ -42,8 +37,9 @@ const UsersList = () => {
     );
     if (confirmDelete) {
       try {
-        await axios.delete(`http://127.0.0.1:5555/users/${userId}`);
+        await axios.delete(`${API_URL}/${userId}`);
         setUsers(users.filter((user) => user.id !== userId));
+        setFilteredUsers(filteredUsers.filter((user) => user.id !== userId));
       } catch (err) {
         console.error("Failed to delete user:", err.message);
       }
@@ -51,11 +47,9 @@ const UsersList = () => {
   };
 
   const getProfilePictureUrl = (profilePicture) => {
-    // If profilePicture starts with 'http', return it as is
-    if (profilePicture.startsWith("http")) {
+    if (profilePicture && profilePicture.startsWith("http")) {
       return profilePicture;
     }
-    // Otherwise, treat it as a local file
     return `http://127.0.0.1:5555/uploads/${profilePicture}`;
   };
 
@@ -77,33 +71,37 @@ const UsersList = () => {
       </div>
 
       <div className="user-list">
-        {filteredUsers.map((user) => (
-          <div className="user-card" key={user.id}>
-            <img
-              src={getProfilePictureUrl(user.profile_picture)}
-              alt={`${user.username}'s profile`}
-            />
-            <h2>{user.username}</h2>
-            <p>
-              <i>Name:</i> {user.first_name} {user.last_name}
-            </p>
-            <p>
-              <i>Email:</i> {user.email}
-            </p>
-            <p>
-              <i>Phone:</i> {user.phone_number}
-            </p>
-            <p>
-              <i>Car Info:</i> {user.car_info}
-            </p>
-            <button
-              className="delete-button"
-              onClick={() => handleDelete(user.id)}
-            >
-              &times;
-            </button>
-          </div>
-        ))}
+        {filteredUsers.length > 0 ? (
+          filteredUsers.map((user) => (
+            <div className="user-card" key={user.id}>
+              <img
+                src={getProfilePictureUrl(user.profile_picture)}
+                alt={`${user.username}'s profile`}
+              />
+              <h2>{user.username}</h2>
+              <p>
+                <i>Name:</i> {user.first_name} {user.last_name}
+              </p>
+              <p>
+                <i>Email:</i> {user.email}
+              </p>
+              <p>
+                <i>Phone:</i> {user.phone_number}
+              </p>
+              <p>
+                <i>Car Info:</i> {user.car_info}
+              </p>
+              <button
+                className="delete-button"
+                onClick={() => handleDelete(user.id)}
+              >
+                &times;
+              </button>
+            </div>
+          ))
+        ) : (
+          <p>No users found.</p>
+        )}
       </div>
     </div>
   );

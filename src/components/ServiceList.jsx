@@ -4,43 +4,29 @@ import "./ServiceList.css";
 
 function ServiceList() {
   const [services, setServices] = useState([]);
-  const [filteredServices, setFilteredServices] = useState([]);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:5555/services");
-        setServices(response.data);
-        setFilteredServices(response.data);
-        setError(null);
-      } catch (error) {
-        console.error("Error fetching services:", error);
-        setError("There was an error fetching the services.");
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  useEffect(() => {
-    const filterServices = () => {
-      const query = searchQuery.toLowerCase();
-      const filtered = services.filter((service) => {
-        const mechanicName = service.mechanic
-          ? `${service.mechanic.first_name} ${service.mechanic.last_name}`
-          : "";
-        return (
-          service.name.toLowerCase().includes(query) ||
-          mechanicName.toLowerCase().includes(query)
-        );
+  const fetchServices = async (query = "") => {
+    try {
+      const response = await axios.get("http://127.0.0.1:5555/services", {
+        params: { search: query },
       });
-      setFilteredServices(filtered);
-    };
+      setServices(response.data);
+      setError(null);
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      setError("There was an error fetching the services.");
+    }
+  };
 
-    filterServices();
-  }, [searchQuery, services]);
+  useEffect(() => {
+    fetchServices(searchQuery);
+  }, [searchQuery]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   if (error) {
     return <div className="error">{error}</div>;
@@ -53,14 +39,14 @@ function ServiceList() {
           type="text"
           placeholder="Search by service name or mechanic name..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={handleSearchChange}
         />
       </div>
-      {filteredServices.length === 0 ? (
-        <div className="no-results">No results found</div>
+      {services.length === 0 ? (
+        <div className="no-results">No services found</div>
       ) : (
         <div className="service-grid">
-          {filteredServices.map((service) => (
+          {services.map((service) => (
             <div key={service.id} className="service-card">
               {service.mechanic && (
                 <div className="mechanic-details">

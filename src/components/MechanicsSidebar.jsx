@@ -6,7 +6,7 @@ import {
   BiStats,
   BiHelpCircle,
 } from "react-icons/bi";
-import { FaCar, FaDollarSign, FaStar, FaBell } from "react-icons/fa";
+import { FaCar, FaDollarSign, FaStar, FaTools } from "react-icons/fa";
 import "./MechanicsSidebar.css";
 
 function MechanicsSidebar() {
@@ -22,6 +22,10 @@ function MechanicsSidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
+        <a href="/mechanichomepage/services" className="item">
+          <FaTools className="icon" />
+          Add a Service
+        </a>{" "}
         <a href="/mechanichomepage/chat" className="item">
           <BiMessage className="icon" />
           Message
@@ -33,10 +37,6 @@ function MechanicsSidebar() {
         <a href="/mechanichomepage/reviews" className="item">
           <FaStar className="icon" /> Reviews
         </a>
-        <a href="#" className="item">
-          <FaBell className="icon" />
-          Notifications
-        </a>{" "}
         <a href="#" className="item">
           <BiSolidReport className="icon" />
           Report

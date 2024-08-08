@@ -24,6 +24,7 @@ import MechanicSideChat from "./components/MechanicSideChat";
 import Hero from "./components/Hero";
 import Hservice from "./components/Hservice";
 import HAbout from "./components/HAbout";
+import MechanicsServices from "./components/MechanicsServices";
 
 function App() {
   return (
@@ -82,6 +83,10 @@ function App() {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/home/chat" element={<UserSideChat />} />
           <Route path="/mechanichomepage/chat" element={<MechanicSideChat />} />
+          <Route
+            path="/mechanichomepage/services"
+            element={<MechanicsServices />}
+          />
         </Routes>
       </Router>
     </>

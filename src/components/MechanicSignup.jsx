@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import './MechanicSignup.css'; // Import the CSS file
+import "./MechanicSignup.css"; // Import the CSS file
 
 function MechanicSignup() {
   const [message, setMessage] = useState("");
@@ -68,7 +68,7 @@ function MechanicSignup() {
         if (response.ok) {
           resetForm();
           setProfilePicture(null);
-          navigate("/");
+          navigate("/logins");
         } else {
           console.error("Error:", data);
         }
@@ -95,7 +95,9 @@ function MechanicSignup() {
           value={formik.values.first_name}
         />
         {formik.touched.first_name && formik.errors.first_name ? (
-          <div className="mechanic-signup__error">{formik.errors.first_name}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.first_name}
+          </div>
         ) : null}
 
         <input
@@ -111,7 +113,9 @@ function MechanicSignup() {
           value={formik.values.last_name}
         />
         {formik.touched.last_name && formik.errors.last_name ? (
-          <div className="mechanic-signup__error">{formik.errors.last_name}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.last_name}
+          </div>
         ) : null}
 
         <input
@@ -159,10 +163,14 @@ function MechanicSignup() {
           value={formik.values.phone_number}
         />
         {formik.touched.phone_number && formik.errors.phone_number ? (
-          <div className="mechanic-signup__error">{formik.errors.phone_number}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.phone_number}
+          </div>
         ) : null}
 
-        <label className="mechanic-signup__label" htmlFor="profile_picture">Profile Picture:</label>
+        <label className="mechanic-signup__label" htmlFor="profile_picture">
+          Profile Picture:
+        </label>
         <input
           className="mechanic-signup__input"
           id="profile_picture"
@@ -173,7 +181,9 @@ function MechanicSignup() {
           onBlur={formik.handleBlur}
         />
         {formik.touched.profile_picture && formik.errors.profile_picture ? (
-          <div className="mechanic-signup__error">{formik.errors.profile_picture}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.profile_picture}
+          </div>
         ) : null}
 
         <input
@@ -189,7 +199,9 @@ function MechanicSignup() {
           value={formik.values.expertise}
         />
         {formik.touched.expertise && formik.errors.expertise ? (
-          <div className="mechanic-signup__error">{formik.errors.expertise}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.expertise}
+          </div>
         ) : null}
 
         <textarea
@@ -220,7 +232,9 @@ function MechanicSignup() {
           value={formik.values.experience_years}
         />
         {formik.touched.experience_years && formik.errors.experience_years ? (
-          <div className="mechanic-signup__error">{formik.errors.experience_years}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.experience_years}
+          </div>
         ) : null}
 
         <input
@@ -252,16 +266,22 @@ function MechanicSignup() {
           value={formik.values.password2}
         />
         {formik.touched.password2 && formik.errors.password2 ? (
-          <div className="mechanic-signup__error">{formik.errors.password2}</div>
+          <div className="mechanic-signup__error">
+            {formik.errors.password2}
+          </div>
         ) : null}
 
-        <button className="mechanic-signup__button" type="submit" disabled={!formik.isValid}>
+        <button
+          className="mechanic-signup__button"
+          type="submit"
+          disabled={!formik.isValid}
+        >
           Sign Up
         </button>
       </form>
       {message && <p className="mechanic-signup__message">{message}</p>}
       <div className="mechanic-signup__link">
-        <Link to="/">Already have an Account? Login here</Link>
+        <Link to="/logins">Already have an Account? Login here</Link>
       </div>
     </div>
   );

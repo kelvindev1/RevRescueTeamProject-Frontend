@@ -8,19 +8,19 @@ const API_URL = "http://127.0.0.1:5555/admins";
 function AdminManager() {
   const [admins, setAdmins] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredAdmins, setFilteredAdmins] = useState([]);
   const [error, setError] = useState(null);
   const [editAdmin, setEditAdmin] = useState(null);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
 
-  // lets fetch all admins from the database
+  // Fetch admins with optional search query
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(API_URL, {
+          params: { search: searchQuery },
+        });
         setAdmins(response.data);
-        setFilteredAdmins(response.data);
       } catch (err) {
         setError("An error occurred while fetching data.");
         console.error(err);
@@ -28,26 +28,17 @@ function AdminManager() {
     };
 
     fetchAdmins();
-  }, []);
-
-  // Filter admins based on the search query
-  useEffect(() => {
-    const result = admins.filter(
-      (admin) =>
-        admin.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        admin.email.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredAdmins(result);
-  }, [searchQuery, admins]);
+  }, [searchQuery]);
 
   const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${API_URL}/${id}`);
-      setAdmins(admins.filter((admin) => admin.id !== id));
-      setFilteredAdmins(filteredAdmins.filter((admin) => admin.id !== id));
-    } catch (err) {
-      setError("An error occurred while deleting the admin.");
-      console.error(err);
+    if (window.confirm("Are you sure you want to delete this admin?")) {
+      try {
+        await axios.delete(`${API_URL}/${id}`);
+        setAdmins(admins.filter((admin) => admin.id !== id));
+      } catch (err) {
+        setError("An error occurred while deleting the admin.");
+        console.error(err);
+      }
     }
   };
 
@@ -68,11 +59,6 @@ function AdminManager() {
       await axios.patch(`${API_URL}/${editAdmin.id}`, updatePayload);
       setAdmins(
         admins.map((admin) =>
-          admin.id === editAdmin.id ? { ...admin, ...updatePayload } : admin
-        )
-      );
-      setFilteredAdmins(
-        filteredAdmins.map((admin) =>
           admin.id === editAdmin.id ? { ...admin, ...updatePayload } : admin
         )
       );
@@ -100,9 +86,9 @@ function AdminManager() {
       {error && <p className="error-message">{error}</p>}
 
       <h2>All Admins</h2>
-      {filteredAdmins.length > 0 ? (
+      {admins.length > 0 ? (
         <div className="admin-list">
-          {filteredAdmins.map((admin) => (
+          {admins.map((admin) => (
             <div key={admin.id} className="admin-card">
               <div className="admin-card-content">
                 <p>

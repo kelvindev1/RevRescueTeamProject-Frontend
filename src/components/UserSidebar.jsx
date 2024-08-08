@@ -22,9 +22,9 @@ function UserSidebar() {
           <BiHome className="icon" />
           Dashboard
         </a>
-        <a href="/home/mechanics" className="item">
+        <a href="/home/services" className="item">
           <FaWrench className="icon" />
-          Mechanics
+          Services
         </a>{" "}
         <a href="/home/chat" className="item">
           <BiMessage className="icon" />

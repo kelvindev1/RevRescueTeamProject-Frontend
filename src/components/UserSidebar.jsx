@@ -7,16 +7,11 @@ import {
   BiStats,
   BiHelpCircle,
 } from "react-icons/bi";
-import { FaCar, FaWrench, FaStar } from "react-icons/fa";
+import { FaWrench, FaStar } from "react-icons/fa";
 
 function UserSidebar() {
   return (
     <div className="menu">
-      <div className="logo">
-        <FaCar className="logo-icon" />
-        <h2>RevRescue</h2>
-      </div>
-
       <div className="menu--list">
         <a href="#" className="item active">
           <BiHome className="icon" />

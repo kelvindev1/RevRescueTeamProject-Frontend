@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import "./UserSidebar.css";
 import {
   BiHome,
@@ -7,16 +8,11 @@ import {
   BiStats,
   BiHelpCircle,
 } from "react-icons/bi";
-import { FaCar, FaWrench, FaStar } from "react-icons/fa";
+import { FaWrench, FaStar } from "react-icons/fa";
 
 function UserSidebar() {
   return (
     <div className="menu">
-      <div className="logo">
-        <FaCar className="logo-icon" />
-        <h2>RevRescue</h2>
-      </div>
-
       <div className="menu--list">
         <a href="#" className="item active">
           <BiHome className="icon" />
@@ -46,6 +42,10 @@ function UserSidebar() {
           <BiHelpCircle className="icon" />
           Help
         </a>
+        <Link to="/recover-password" className="item"> {/* Updated Link */}
+          <BiHelpCircle className="icon" />
+          Password Recovery
+        </Link>
       </div>
     </div>
   );

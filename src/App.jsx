@@ -19,12 +19,13 @@ import ServiceList from "./components/ServiceList";
 import MechanicList from "./components/MechanicList";
 import AdminReviewsManager from "./components/AdminReviewsManager";
 import Notifications from "./components/Notifications";
-import UserSideChat from "./components/UserSideChat";
-import MechanicSideChat from "./components/MechanicSideChat";
 import Hero from "./components/Hero";
 import Hservice from "./components/Hservice";
 import HAbout from "./components/HAbout";
 import MechanicsServices from "./components/MechanicsServices";
+import PasswordRecovery from './components/PasswordRecovery';
+import ResetPassword from './components/ResetPassword';
+
 
 function App() {
   return (
@@ -81,12 +82,12 @@ function App() {
           <Route path="/home/services" element={<ServiceList />} />
           <Route path="/home/mechanics" element={<MechanicList />} />
           <Route path="/notifications" element={<Notifications />} />
-          <Route path="/home/chat" element={<UserSideChat />} />
-          <Route path="/mechanichomepage/chat" element={<MechanicSideChat />} />
           <Route
             path="/mechanichomepage/services"
             element={<MechanicsServices />}
           />
+          <Route path="/recover-password" element={<PasswordRecovery />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </Router>
     </>

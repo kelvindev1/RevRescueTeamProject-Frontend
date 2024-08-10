@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import "./UserSidebar.css";
 import {
   BiHome,
@@ -38,11 +38,12 @@ function UserSidebar() {
           <BiStats className="icon" />
           Stats
         </a>
-        <a href="#" className="item">
+        <a href="/home/help" className="item">
           <BiHelpCircle className="icon" />
           Help
         </a>
-        <Link to="/recover-password" className="item"> {/* Updated Link */}
+        <Link to="/recover-password" className="item">
+          {" "}
           <BiHelpCircle className="icon" />
           Password Recovery
         </Link>

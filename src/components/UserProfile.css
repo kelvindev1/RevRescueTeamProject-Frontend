@@ -1,31 +1,9 @@
 .profile {
-    flex: 3;
-}
-
-.profile--header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.edit {
-    background: #dde6ed;
-    padding: 12px;
-    border-radius: 10px;
-    color: #969393;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.edit .icon {
-    font-size: 20px;
-    transition: 0.3s ease-in-out;
+    flex: 1;
+    margin-top: 137px;
 }
 
 .user--profile {
-    height: 85%;
-    width: 50vh;
     margin-top: 2rem;
     background-color: #dde6ed;
     border-radius: 10px;

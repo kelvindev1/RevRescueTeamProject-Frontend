@@ -1,6 +1,5 @@
 import React from "react";
-import "./Profile.css";
-import ProfileHeader from "./ProfileHeader";
+import "./UserProfile.css";
 import userimage from "/src/assets/images/avatar.webp";
 import { FaCarBattery, FaLifeRing, FaWrench } from "react-icons/fa";
 
@@ -19,17 +18,18 @@ const expertises = [
   },
 ];
 
-function Profile() {
+function UserProfile() {
   return (
     <>
       <div className="profile">
-        <ProfileHeader />
-
         <div className="user--profile">
           <div className="user--detail">
             <img src={userimage} alt="user" />
             <h3 className="username">User Profile</h3>
-            <span className="profession">you can view all of our mechanics and navigate to the service section to checkout all of our services</span>
+            <span className="profession">
+              you can view all of our mechanics and navigate to the service
+              section to checkout all of our services
+            </span>
           </div>
 
           <div className="user-expertises">
@@ -51,4 +51,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserProfile;

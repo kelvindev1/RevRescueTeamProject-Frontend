@@ -23,6 +23,9 @@ import Hero from "./components/Hero";
 import Hservice from "./components/Hservice";
 import HAbout from "./components/HAbout";
 import MechanicsServices from "./components/MechanicsServices";
+import PasswordRecovery from './components/PasswordRecovery';
+import ResetPassword from './components/ResetPassword';
+
 
 function App() {
   return (
@@ -83,6 +86,8 @@ function App() {
             path="/mechanichomepage/services"
             element={<MechanicsServices />}
           />
+          <Route path="/recover-password" element={<PasswordRecovery />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
       </Router>
     </>

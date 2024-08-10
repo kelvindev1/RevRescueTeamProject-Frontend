@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import "./UserSidebar.css";
 import {
   BiHome,
@@ -41,6 +42,10 @@ function UserSidebar() {
           <BiHelpCircle className="icon" />
           Help
         </a>
+        <Link to="/recover-password" className="item"> {/* Updated Link */}
+          <BiHelpCircle className="icon" />
+          Password Recovery
+        </Link>
       </div>
     </div>
   );

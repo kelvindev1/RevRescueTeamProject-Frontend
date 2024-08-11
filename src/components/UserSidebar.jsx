@@ -30,7 +30,7 @@ function UserSidebar() {
           <FaStar className="icon" />
           Review
         </a>
-        <a href="#" className="item">
+        <a href="/home/report" className="item">
           <BiSolidReport className="icon" />
           Report
         </a>{" "}

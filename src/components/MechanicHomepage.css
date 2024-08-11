@@ -1,11 +1,65 @@
-.page-container {
+/* MechanicHomePageNavbar */
+.navbar-header-container {
   display: flex;
-  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
 }
 
-.content {
+.mechanic-homepage-navbar-container {
+  text-align: right;
+}
+
+.car-logo {
+  display: flex;
+  padding: 5px;
+  text-align: center;
+  align-items: center;
+  color: #273774;
+  gap: 20px;
+}
+
+.car-logo-icon {
+  font-size: 2rem;
+  margin-right: 8px;
+}
+
+
+
+/* MechanicHomePage */
+.mechanic-dashboard {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.Mechanic-sidebar {
+  width: 12%;
+  background-color: #f4f4f4;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard--contents {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+
+.dashboard-mechanic-content {
   flex: 1;
   overflow-y: auto;
-  padding: 20px;
-  background-color: #ffffff;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.dashboard-mechanic-profile {
+  width: 20%;
+  background-color: #e0e0e0;
+  box-sizing: border-box;
 }

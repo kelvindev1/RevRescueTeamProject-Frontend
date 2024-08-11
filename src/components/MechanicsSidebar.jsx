@@ -6,17 +6,12 @@ import {
   BiStats,
   BiHelpCircle,
 } from "react-icons/bi";
-import { FaCar, FaDollarSign, FaStar, FaTools } from "react-icons/fa";
+import { FaDollarSign, FaStar, FaTools } from "react-icons/fa";
 import "./MechanicsSidebar.css";
 
 function MechanicsSidebar() {
   return (
     <div className="mechanic-menu">
-      <div className="mechanic-logo">
-        <FaCar className="mechanic-logo-icon" />
-        <h2>RevRescue</h2>
-      </div>
-
       <div className="mechanic-menu--list">
         <a href="#" className="item active">
           <BiHome className="icon" />

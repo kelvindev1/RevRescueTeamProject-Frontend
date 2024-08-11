@@ -106,7 +106,7 @@ function MechanicLogin() {
       </form>
       {message && <p className="mechanic-login-error-message">{message}</p>}
       <p>
-        <Link to="/mechanic_register">
+        <Link to="/mechanic_register" className="link-to-register">
           Don't have an account? Register here
         </Link>
       </p>

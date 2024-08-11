@@ -34,7 +34,7 @@ function UserSidebar() {
           <BiSolidReport className="icon" />
           Report
         </a>{" "}
-        <a href="#" className="item">
+        <a href="/home/stats" className="item">
           <BiStats className="icon" />
           Stats
         </a>

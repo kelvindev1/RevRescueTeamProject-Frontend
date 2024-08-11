@@ -27,6 +27,7 @@ import PasswordRecovery from "./components/PasswordRecovery";
 import ResetPassword from "./components/ResetPassword";
 import Help from "./components/Help";
 import Report from "./components/Report";
+import Stats from "./components/Stats";
 
 function App() {
   return (
@@ -107,6 +108,7 @@ function App() {
           <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route path="/home/help" element={<Help />} />
           <Route path="/home/report" element={<Report />} />
+          <Route path="/home/stats" element={<Stats />} />
         </Routes>
       </Router>
     </>

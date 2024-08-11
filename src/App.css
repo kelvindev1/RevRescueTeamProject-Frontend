@@ -1,0 +1,18 @@
+.All-logins {
+    background-color: var(--space-cadet);
+    margin-top: -50px;
+    margin-bottom: -50px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.user_register_style,
+.mechanic_register_style {
+    background-color: rgb(2, 4, 8);
+    color: white;
+    margin-top: -50px;
+    margin-bottom: -50px;
+}

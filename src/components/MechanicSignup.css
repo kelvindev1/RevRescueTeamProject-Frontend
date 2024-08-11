@@ -1,23 +1,18 @@
-/* MechanicSignup container styling */
 .mechanic-signup {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #f4f4f4;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* MechanicSignup title styling */
 .mechanic-signup__title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 28px;
     font-weight: 600;
-    color: #333;
 }
 
-/* General input field styling */
 .mechanic-signup__input,
 .mechanic-signup__textarea {
     padding: 12px;
@@ -31,7 +26,6 @@
     box-sizing: border-box;
 }
 
-/* Focus state for input fields */
 .mechanic-signup__input:focus,
 .mechanic-signup__textarea:focus {
     border-color: #0056b3;
@@ -39,12 +33,10 @@
     outline: none;
 }
 
-/* File input styling */
 .mechanic-signup__input[type="file"] {
     margin-bottom: 20px;
 }
 
-/* Submit button styling */
 .mechanic-signup__button {
     padding: 12px;
     background-color: #007bff;
@@ -58,24 +50,21 @@
     box-sizing: border-box;
 }
 
-/* Hover state for button */
 .mechanic-signup__button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Error message styling */
 .mechanic-signup__error,
 .mechanic-signup__message {
-    color: #d9534f;
-    font-size: 14px;
-    margin-top: -12px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
 }
 
-/* Link styling */
-.mechanic-signup__link {
-    color: #007bff;
+.mechanic--signup-link a {
     text-decoration: none;
+    color: gold !important;
 }
 
 .mechanic-signup__link:hover {

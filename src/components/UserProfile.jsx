@@ -25,9 +25,9 @@ function UserProfile() {
         <div className="user--profile">
           <div className="user--detail">
             <img src={userimage} alt="user" />
-            <h3 className="username">User Profile</h3>
+            <h3 className="username">Profile</h3>
             <span className="profession">
-              you can view all of our mechanics and navigate to the service
+              You can view all of our mechanics and navigate to the service
               section to checkout all of our services
             </span>
           </div>
@@ -41,7 +41,6 @@ function UserProfile() {
                     <h5 className="title">{expertise.title}</h5>
                   </div>
                 </div>
-                <div className="action">:</div>
               </div>
             ))}
           </div>

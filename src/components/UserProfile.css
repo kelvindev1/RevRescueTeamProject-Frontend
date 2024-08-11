@@ -1,10 +1,9 @@
 .profile {
     flex: 1;
-    margin-top: 137px;
+    margin-top: 190px;
 }
 
 .user--profile {
-    margin-top: 2rem;
     background-color: #dde6ed;
     border-radius: 10px;
     padding: 10px;
@@ -29,6 +28,10 @@
 
 .user--detail .username {
     color: black;
+}
+
+.profession {
+    margin-bottom: 100px;
 }
 
 .user-expertises {

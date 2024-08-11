@@ -23,9 +23,10 @@ import Hero from "./components/Hero";
 import Hservice from "./components/Hservice";
 import HAbout from "./components/HAbout";
 import MechanicsServices from "./components/MechanicsServices";
-import PasswordRecovery from './components/PasswordRecovery';
-import ResetPassword from './components/ResetPassword';
-
+import PasswordRecovery from "./components/PasswordRecovery";
+import ResetPassword from "./components/ResetPassword";
+import Help from "./components/Help";
+import Report from "./components/Report";
 
 function App() {
   return (
@@ -48,7 +49,9 @@ function App() {
             path="/logins"
             element={
               <>
-                <AdminLogin /> <UserLogin /> <MechanicLogin />{" "}
+                <div className="All-logins">
+                  <AdminLogin /> <UserLogin /> <MechanicLogin />{" "}
+                </div>
               </>
             }
           />
@@ -63,8 +66,22 @@ function App() {
             }
           />
           <Route path="/admin_register" element={<AdminSignup />} />
-          <Route path="/user_register" element={<UserSignup />} />
-          <Route path="/mechanic_register" element={<MechanicSignup />} />
+          <Route
+            path="/user_register"
+            element={
+              <div className="user_register_style">
+                <UserSignup />{" "}
+              </div>
+            }
+          />
+          <Route
+            path="/mechanic_register"
+            element={
+              <div className="mechanic_register_style">
+                <MechanicSignup />
+              </div>
+            }
+          />
           <Route path="/adminhomepage" element={<AdminHomePage />} />
           <Route path="/adminhomepage/admins" element={<AdminManager />} />
           <Route
@@ -88,6 +105,8 @@ function App() {
           />
           <Route path="/recover-password" element={<PasswordRecovery />} />
           <Route path="/reset-password/:token" element={<ResetPassword />} />
+          <Route path="/home/help" element={<Help />} />
+          <Route path="/home/report" element={<Report />} />
         </Routes>
       </Router>
     </>

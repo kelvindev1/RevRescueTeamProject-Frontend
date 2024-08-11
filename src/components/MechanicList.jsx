@@ -10,7 +10,7 @@ function MechanicList() {
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [noResults, setNoResults] = useState(false); // State for no results
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
     const fetchMechanics = async () => {
@@ -20,7 +20,7 @@ function MechanicList() {
         });
         const data = response.data;
         setMechanics(data);
-        setNoResults(data.length === 0); // Set noResults based on data length
+        setNoResults(data.length === 0);
       } catch (error) {
         console.error("There was an error fetching the mechanics!", error);
       }

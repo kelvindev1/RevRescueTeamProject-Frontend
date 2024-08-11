@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import "./MechanicSignup.css"; // Import the CSS file
+import "./MechanicSignup.css";
 
 function MechanicSignup() {
   const [message, setMessage] = useState("");
@@ -280,7 +280,8 @@ function MechanicSignup() {
         </button>
       </form>
       {message && <p className="mechanic-signup__message">{message}</p>}
-      <div className="mechanic-signup__link">
+
+      <div className="mechanic--signup-link">
         <Link to="/logins">Already have an Account? Login here</Link>
       </div>
     </div>

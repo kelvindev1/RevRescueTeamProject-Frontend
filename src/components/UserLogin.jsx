@@ -7,6 +7,7 @@ import "./UserLogin.css";
 function UserLogin() {
   const [message, setMessage] = useState("");
   const [user, setUser] = useState(null);
+  const [visitData, setVisitData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,6 +42,30 @@ function UserLogin() {
         if (response.ok) {
           setUser(data.user);
           formik.resetForm();
+
+          const lastVisit = localStorage.getItem("lastVisit");
+          const now = new Date().toISOString().split("T")[0];
+
+          if (lastVisit !== now) {
+            const visitsResponse = await fetch(
+              "http://127.0.0.1:5555/user_auth/api/visits",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify({ userId: data.user.id }),
+              }
+            );
+
+            if (visitsResponse.ok) {
+              const visits = await visitsResponse.json();
+              setVisitData(visits);
+              localStorage.setItem("lastVisit", now);
+            }
+          }
+
           navigate("/home");
         }
       } catch (error) {
@@ -105,6 +130,12 @@ function UserLogin() {
           Don't have an account? Register here
         </Link>
       </p>
+      {visitData && (
+        <div className="visit-data">
+          <h2>Visit Data</h2>
+          <p>Total Visits: {visitData.count}</p>
+        </div>
+      )}
     </div>
   );
 }

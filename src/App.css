@@ -1,12 +1,22 @@
-.All-logins {
-    background-color: var(--space-cadet);
-    margin-top: -50px;
-    margin-bottom: -50px;
-}
-
 body {
     margin: 0;
     padding: 0;
+}
+
+.All-logins {
+    background-color: rgb(2, 4, 8);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+
+.All-logins>div {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    margin-bottom: 333px;
+    margin-top: 200px;
 }
 
 .user_register_style,

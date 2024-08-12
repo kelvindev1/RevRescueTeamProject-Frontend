@@ -33,7 +33,6 @@ import Stats from "./components/Stats";
 import HNavbar from "./components/HNavbar";
 import MechanicPasswordRecovery from "./components/MechanicPasswordRecovery";
 import MechanicPasswordReset from "./components/MechanicPasswordReset";
-
 function App() {
   return (
     <>
@@ -127,6 +126,7 @@ function App() {
           <Route path="/home/help" element={<Help />} />
           <Route path="/home/report" element={<Report />} />
           <Route path="/home/stats" element={<Stats />} />
+          <Route path="/adminlogout" element={<AdminLogout />} />
         </Routes>
       </Router>
     </>

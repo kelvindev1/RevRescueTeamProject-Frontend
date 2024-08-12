@@ -1,0 +1,86 @@
+/* .admin-logout-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--cadet-blue-creyola);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.admin-logout-title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #171518;
+  margin-bottom: 20px;
+}
+
+.admin-logout-text {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #171518;
+}
+
+.admin-logout-button {
+  padding: 12px;
+  background-color: #3d03f9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 50%;
+}
+
+.admin-logout-button:hover {
+  background-color: #0717ca;
+  transform: scale(1.05);
+} */
+
+.admin-logout-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: var(--cadet-blue-creyola);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.admin-logout-title {
+  font-size: 30px;
+  font-weight: 600;
+  color: #171518;
+  margin-bottom: 20px;
+}
+
+.admin-logout-text {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #171518;
+}
+
+.admin-logout-button {
+  padding: 12px;
+  background-color: #3d03f9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  width: 100px;
+  margin: 5px;
+}
+
+.admin-logout-button:hover {
+  background-color: #0717ca;
+  transform: scale(1.05);
+}
+
+.cancel-button {
+  background-color: #f44336;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
+}

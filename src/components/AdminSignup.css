@@ -1,0 +1,88 @@
+
+
+
+ .admin-signup-container {
+    max-width: 500px; /* Reduced max-width */
+    margin: 30px auto; /* Reduced margin */
+    padding: 15px;
+    background-color: var(--cadet-blue-creyola);
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(192, 7, 7, 0.1);
+}
+
+.admin-signup-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px; /* Slightly reduced font-size */
+    font-weight: 600;
+    color: #171518;
+}
+
+.admin-signup-input {
+    /* width: 100%; */
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid #3a8ce3;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #e9e8e9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.admin-signup-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.admin-signup-error {
+    color: #d9534f;
+    font-size: 12px;
+    margin-top: -6px;
+    margin-bottom: 6px;
+    font-style: italic;
+}
+
+.admin-signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3d03f9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 15px;
+}
+
+.admin-signup-button:disabled {
+    background-color: #7f7f7f;
+    cursor: not-allowed;
+}
+
+.admin-signup-button:hover:not(:disabled) {
+    background-color: #0717ca;
+    transform: scale(1.03);
+}
+
+.admin-signup-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #0056b3;
+    transition: color 0.3s;
+}
+
+.admin-signup-link:hover {
+    color: #003580;
+}
+
+.admin-signup-message {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #171518;
+}

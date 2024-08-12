@@ -42,11 +42,6 @@ function UserSidebar() {
           <BiHelpCircle className="icon" />
           Help
         </a>
-        <Link to="/recover-password" className="item">
-          {" "}
-          <BiHelpCircle className="icon" />
-          Password Recovery
-        </Link>
       </div>
     </div>
   );

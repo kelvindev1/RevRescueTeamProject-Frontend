@@ -1,0 +1,29 @@
+.hnavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+}
+
+.hnavbar__logo {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.hnavbar__menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.hnavbar__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.hnavbar__link--active {
+    border-bottom: 2px solid #fff;
+}

@@ -28,6 +28,7 @@ import ResetPassword from "./components/ResetPassword";
 import Help from "./components/Help";
 import Report from "./components/Report";
 import Stats from "./components/Stats";
+import HNavbar from "./components/HNavbar";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             element={
               <>
                 {" "}
+                <HNavbar />
                 <Hero />
                 <Hservice />
                 <HAbout />

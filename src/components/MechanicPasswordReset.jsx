@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./ResetPassword.css";
 
-const ResetPassword = () => {
+const MechanicPasswordReset = () => {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -17,7 +17,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5555/user/reset_password",
+        "http://localhost:5555/mechanic/reset_password",
         {
           recovery_token: token,
           new_password: newPassword,
@@ -113,4 +113,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default MechanicPasswordReset;

@@ -110,6 +110,11 @@ function MechanicLogin() {
           Don't have an account? Register here
         </Link>
       </p>
+      <p>
+        <Link to="/mechanic/recover-password" className="link-to-register">
+          Forgot Password? Reset Here
+        </Link>
+      </p>
     </div>
   );
 }

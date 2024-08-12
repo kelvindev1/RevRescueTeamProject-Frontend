@@ -28,7 +28,7 @@ import ResetPassword from "./components/ResetPassword";
 import Help from "./components/Help";
 import Report from "./components/Report";
 import Stats from "./components/Stats";
-
+import AdminLogout from "./components/AdminLogout";
 function App() {
   return (
     <>
@@ -109,6 +109,7 @@ function App() {
           <Route path="/home/help" element={<Help />} />
           <Route path="/home/report" element={<Report />} />
           <Route path="/home/stats" element={<Stats />} />
+          <Route path="/adminlogout" element={<AdminLogout />} />
         </Routes>
       </Router>
     </>

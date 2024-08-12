@@ -36,7 +36,6 @@ function AdminHomePageNavbar() {
       <Link
         to={"/adminhomepage/users"}
         style={{
-          border: "",
           margin: "20px",
           padding: "20px",
           textDecoration: "none",
@@ -66,6 +65,18 @@ function AdminHomePageNavbar() {
         }}
       >
         Reviews
+      </Link>
+      <Link
+        to={"/adminlogout"}
+        style={{
+          margin: "10px",
+          padding: "4px",
+          textDecoration: "none",
+          fontSize: "20px",
+          color: "red", // Added color to distinguish the logout link
+        }}
+      >
+        Logout
       </Link>
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./PasswordRecovery.css";
 
-const PasswordRecovery = () => {
+const UserPasswordRecovery = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -58,4 +58,4 @@ const PasswordRecovery = () => {
   );
 };
 
-export default PasswordRecovery;
+export default UserPasswordRecovery;

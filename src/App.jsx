@@ -53,16 +53,6 @@ function App() {
             }
           />
           <Route
-            path="/logins"
-            element={
-              <>
-                <div className="All-logins">
-                  <AdminLogin /> <UserLogin /> <MechanicLogin />{" "}
-                </div>
-              </>
-            }
-          />
-          <Route
             path="/home"
             element={
               <>
@@ -72,6 +62,7 @@ function App() {
               </>
             }
           />{" "}
+          <Route path="/user_login" element={<UserLogin />} />
           <Route path="/recover-password" element={<UserPasswordRecovery />} />
           <Route
             path="/reset-password/:token"
@@ -86,6 +77,7 @@ function App() {
               </div>
             }
           />
+          <Route path="/admin_login" element={<AdminLogin />} />
           <Route
             path="/admin/recover-password"
             element={<AdminPasswordRecovery />}
@@ -102,6 +94,7 @@ function App() {
           />
           <Route path="/adminhomepage/users" element={<UsersList />} />
           <Route path="/adminhomepage/mechanics" element={<MechanicsList />} />
+          <Route path="/mechanic_login" element={<MechanicLogin />} />
           <Route
             path="/mechanic_register"
             element={

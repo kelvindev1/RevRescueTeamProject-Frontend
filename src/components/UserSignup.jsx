@@ -61,7 +61,7 @@ function UserSignup() {
 
       if (response.ok) {
         resetForm();
-        navigate("/logins");
+        navigate("/user_login");
       }
     },
   });
@@ -249,7 +249,7 @@ function UserSignup() {
       </form>
       {message && <p className="user-signup-message">{message}</p>}
       <div>
-        <Link to="/logins" className="user-signup-link">
+        <Link to="/user_login" className="user-signup-link">
           Already have an Account? Login here
         </Link>
       </div>

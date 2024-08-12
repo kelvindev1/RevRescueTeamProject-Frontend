@@ -3,11 +3,6 @@ import "./Hero.css";
 
 const Hero = () => (
   <>
-    <div className="logins-a-hero">
-      <a href="/logins" className="hero-logins-btn">
-        <span className="span">Register With US</span>
-      </a>
-    </div>
     <section
       className="hero has-bg-image"
       aria-label="home"

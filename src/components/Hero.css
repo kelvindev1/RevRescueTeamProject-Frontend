@@ -25,29 +25,6 @@
     --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
 }
 
-.hero-logins-btn {
-    background-color: var(--international-orange-engineering);
-    color: var(--white);
-    max-width: max-content;
-    font-family: var(--ff-chakra-petch);
-    font-weight: var(--fw-600);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    transition: var(--transition);
-    text-decoration: none;
-    margin-bottom: -60px;
-}
-
-.hero-logins-btn:is(:hover, :focus-visible) {
-    transform: translateY(-5px);
-    background-color: var(--oxford-blue-3);
-    border-color: var(--white);
-}
-
 .hero {
     padding-block: var(--section-padding);
 }
@@ -56,6 +33,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;
+    margin-top: -82px;
+    padding-bottom: 180px;
 }
 
 .hero .container {

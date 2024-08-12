@@ -1,29 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import "./ResetPassword.css"; // Import the CSS file
+import "./ResetPassword.css";
 
-const ResetPassword = () => {
-  const { token } = useParams(); // Extract token from URL
+const MechanicPasswordReset = () => {
+  const { token } = useParams();
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false); // State for password visibility
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
     setError("");
 
-    // Debugging information
-    console.log("Submitting form with:", {
-      recovery_token: token,
-      new_password: newPassword,
-    });
-
     try {
       const response = await axios.post(
-        "http://localhost:5555/user/reset_password",
+        "http://localhost:5555/mechanic/reset_password",
         {
           recovery_token: token,
           new_password: newPassword,
@@ -35,6 +29,7 @@ const ResetPassword = () => {
         }
       );
       setMessage(response.data.message);
+      setNewPassword("");
     } catch (err) {
       setError(
         err.response ? err.response.data.message : "Something went wrong"
@@ -48,7 +43,6 @@ const ResetPassword = () => {
 
   return (
     <div className="reset-password">
-      <h2 className="reset-password__title">Reset Password</h2>
       <form className="reset-password__form" onSubmit={handleSubmit}>
         <div className="password-input-container">
           <label className="reset-password__label">New Password:</label>
@@ -56,9 +50,11 @@ const ResetPassword = () => {
             <input
               type={isPasswordVisible ? "text" : "password"}
               className="reset-password__input"
+              placeholder="Enter new password"
+              autoComplete="off"
+              required
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="Enter new password"
             />
             <button
               type="button"
@@ -108,7 +104,7 @@ const ResetPassword = () => {
           </div>
         </div>
         <button type="submit" className="reset-password__button">
-          Reset Password
+          Send
         </button>
       </form>
       {message && <p className="reset-password__message">{message}</p>}
@@ -117,4 +113,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default MechanicPasswordReset;

@@ -130,6 +130,13 @@ function UserLogin() {
           Don't have an account? Register here
         </Link>
       </p>
+
+      <p>
+        <Link to="/recover-password" className="link-to-register">
+          Forgot Password? Reset Here
+        </Link>
+      </p>
+
       {visitData && (
         <div className="visit-data">
           <h2>Visit Data</h2>

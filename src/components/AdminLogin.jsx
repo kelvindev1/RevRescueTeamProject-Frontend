@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
 function AdminLogin() {
@@ -98,6 +98,11 @@ function AdminLogin() {
         </button>
       </form>
       {message && <p className="admin-login-error-message">{message}</p>}
+      <p>
+        <Link to="/admin/recover-password" className="link-to-register">
+          Forgot Password? Reset Here
+        </Link>
+      </p>
     </div>
   );
 }

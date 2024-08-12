@@ -181,7 +181,7 @@ function AdminSignup() {
 
       if (response.ok) {
         resetForm();
-        navigate("/logins");
+        navigate("/admin_login");
       }
     },
   });
@@ -264,7 +264,7 @@ function AdminSignup() {
       </form>
       {message && <p className="admin-signup-message">{message}</p>}
       <div>
-        <Link to="/logins" className="admin-signup-link">Already have an Account? Login here</Link>
+        <Link to="/admin_login">Already have an Account? Login here</Link>
       </div>
     </div>
   );

@@ -16,6 +16,7 @@ function HNavbar() {
           YourLogo
         </NavLink>
       </div>
+
       <ul className="hnavbar__menu">
         <li>
           <NavLink

@@ -68,7 +68,7 @@ function MechanicSignup() {
         if (response.ok) {
           resetForm();
           setProfilePicture(null);
-          navigate("/logins");
+          navigate("/mechanic_login");
         } else {
           console.error("Error:", data);
         }
@@ -282,7 +282,7 @@ function MechanicSignup() {
       {message && <p className="mechanic-signup__message">{message}</p>}
 
       <div className="mechanic--signup-link">
-        <Link to="/logins">Already have an Account? Login here</Link>
+        <Link to="/mechanic_login">Already have an Account? Login here</Link>
       </div>
     </div>
   );

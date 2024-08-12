@@ -25,12 +25,6 @@
     --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
 }
 
-.logins-a-hero {
-    position: fixed;
-    right: 20px;
-    z-index: 1000;
-}
-
 .hero-logins-btn {
     background-color: var(--international-orange-engineering);
     color: var(--white);

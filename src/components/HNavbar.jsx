@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./HNavbar.css";
 
 function HNavbar() {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <nav className="hnavbar">
       <div className="hnavbar__logo">
@@ -13,15 +19,6 @@ function HNavbar() {
       <ul className="hnavbar__menu">
         <li>
           <NavLink
-            to="/home"
-            className="hnavbar__link"
-            activeClassName="hnavbar__link--active"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/about"
             className="hnavbar__link"
             activeClassName="hnavbar__link--active"
@@ -29,15 +26,7 @@ function HNavbar() {
             About
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/services"
-            className="hnavbar__link"
-            activeClassName="hnavbar__link--active"
-          >
-            Services
-          </NavLink>
-        </li>
+
         <li>
           <NavLink
             to="/contact"
@@ -46,6 +35,39 @@ function HNavbar() {
           >
             Contact
           </NavLink>
+        </li>
+
+        <li
+          className="dropdown"
+          onMouseEnter={toggleDropdown}
+          onMouseLeave={toggleDropdown}
+        >
+          <NavLink
+            to="#"
+            className="hnavbar__link"
+            activeClassName="hnavbar__link--active"
+          >
+            Login
+          </NavLink>
+          {dropdownOpen && (
+            <ul className="dropdown__menu">
+              <li>
+                <NavLink to="/user_login" className="dropdown__link">
+                  User
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/mechanic_login" className="dropdown__link">
+                  Mechanic
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/admin_login" className="dropdown__link">
+                  Admin
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </li>
       </ul>
     </nav>

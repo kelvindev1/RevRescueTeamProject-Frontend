@@ -26,11 +26,11 @@ function MechanicsSidebar() {
         <a href="/mechanichomepage/reviews" className="item">
           <FaStar className="icon" /> Reviews
         </a>
-        <a href="#" className="item">
+        <a href="/home/report" className="item">
           <BiSolidReport className="icon" />
           Report
         </a>{" "}
-        <a href="#" className="item">
+        <a href="/home/help" className="item">
           <BiHelpCircle className="icon" />
           Help
         </a>

@@ -1,0 +1,21 @@
+.about-paragraphs {
+    background-color: var(--space-cadet);
+    padding: 20px;
+    font-size: 20px;
+    color: var(--white);
+    line-height: 1.3;
+    text-align: center;
+    font-weight: normal;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    padding-left: 452px;
+    padding-right: 452px;
+}
+
+.about-paragraphs p {
+    margin-bottom: 20px;
+    text-align: justify;
+}

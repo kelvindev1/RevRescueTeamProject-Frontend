@@ -1,41 +1,114 @@
 .contact-container {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.contact-container h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.contact-details {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+    background-color: var(--space-cadet);
+    color: white;
 }
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.contact-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
 }
 
-.contact-icon {
-    font-size: 24px;
-    color: #0073e6;
+.contact-paragraphs {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    line-height: 1.6;
 }
 
-.contact-link {
-    text-decoration: none;
-    color: #0073e6;
+.contact-paragraphs p {
+    margin-bottom: 20px;
+    text-align: justify;
     font-size: 18px;
 }
 
-.contact-link:hover {
-    text-decoration: underline;
+.continer-contact--item {
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-social-icon {
+    font-size: 2rem;
+    padding: 25px;
+    color: rgb(195, 204, 233);
+}
+
+.contact-social-icon:hover {
+    color: blue;
+    font-size: 2.5rem;
+    transition: 0.6s ease-in-out;
+}
+
+.continer-contact-mores {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.contact--item {
+    margin: 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.contact--item:hover {
+    font-size: 1.8rem;
+    transition: 0.6s ease-in-out;
+}
+
+.contact--item i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: rgb(195, 204, 233);
+}
+
+
+.location {
+    font-size: 1.5rem;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact--item,
+    .contact-social-icon {
+        font-size: 1rem;
+    }
+
+    .location {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contact-container {
+        padding: 10px;
+    }
+
+    .contact-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .contact--item,
+    .contact-social-icon {
+        font-size: 0.9rem;
+    }
+
+    .location {
+        font-size: 1rem;
+    }
 }

@@ -17,3 +17,12 @@
     padding: 1rem;
     box-sizing: border-box;
 }
+
+
+/* AdminContent  */
+.welcome-p {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2rem;
+
+}

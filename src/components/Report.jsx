@@ -8,7 +8,7 @@ function Report() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setError(""); // Reset any previous error
+    setError("");
 
     try {
       const response = await fetch("http://127.0.0.1:5555/report", {
@@ -19,10 +19,8 @@ function Report() {
         body: JSON.stringify({ start_date: startDate, end_date: endDate }),
       });
 
-      // Check if the response status indicates an error
       if (!response.ok) {
         if (response.status === 500) {
-          // Handle specific server error
           throw new Error("Internal server error. Please try again later.");
         }
         throw new Error(
@@ -31,7 +29,7 @@ function Report() {
       }
 
       const data = await response.json();
-      setReportData(data); // Assuming the response contains the report data
+      setReportData(data);
     } catch (error) {
       setError(
         error.message || "Failed to fetch report data. Please try again."

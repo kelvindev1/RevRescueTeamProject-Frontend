@@ -13,7 +13,6 @@ function AdminManager() {
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
 
-  // Fetch admins with optional search query
   useEffect(() => {
     const fetchAdmins = async () => {
       try {

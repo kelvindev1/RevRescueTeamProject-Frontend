@@ -7,16 +7,26 @@ const api = axios.create({
 });
 
 function Notifications() {
+  const [assistanceRequests, setAssistanceRequests] = useState([]);
   const [users, setUsers] = useState([]);
   const [mechanics, setMechanics] = useState([]);
-  const [assistanceRequests, setAssistanceRequests] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    fetchAssistanceRequests();
     fetchUsers();
     fetchMechanics();
-    fetchAssistanceRequests();
   }, []);
+
+  const fetchAssistanceRequests = async () => {
+    try {
+      const response = await api.get("/assistance_requests");
+      setAssistanceRequests(response.data);
+    } catch (error) {
+      console.error("Error fetching assistance requests:", error);
+      setError("Failed to fetch assistance requests.");
+    }
+  };
 
   const fetchUsers = async () => {
     try {
@@ -38,16 +48,6 @@ function Notifications() {
     }
   };
 
-  const fetchAssistanceRequests = async () => {
-    try {
-      const response = await api.get("/assistance_requests");
-      setAssistanceRequests(response.data);
-    } catch (error) {
-      console.error("Error fetching assistance requests:", error);
-      setError("Failed to fetch assistance requests.");
-    }
-  };
-
   const getUserName = (userId) => {
     const user = users.find((user) => user.id === userId);
     return user ? `${user.first_name} ${user.last_name}` : "Unknown User";
@@ -60,11 +60,18 @@ function Notifications() {
       : "Unknown Mechanic";
   };
 
-  const getAssistanceRequestMessage = (assistanceRequestId) => {
-    const request = assistanceRequests.find(
-      (request) => request.id === assistanceRequestId
-    );
-    return request ? request.message : "Unknown Request";
+  const handleDeleteRequest = async (requestId) => {
+    if (window.confirm("Are you sure you want to delete this request?")) {
+      try {
+        await api.delete(`/assistance_requests/${requestId}`);
+        setAssistanceRequests((prevRequests) =>
+          prevRequests.filter((request) => request.id !== requestId)
+        );
+      } catch (error) {
+        console.error("Error deleting assistance request:", error);
+        setError("Failed to delete assistance request.");
+      }
+    }
   };
 
   return (
@@ -81,9 +88,18 @@ function Notifications() {
               <strong>Receiver:</strong> {getMechanicName(request.mechanic_id)}
             </p>
             <p>
-              <strong>Message:</strong>{" "}
-              {getAssistanceRequestMessage(request.id)}
+              <strong>Message:</strong> {request.message}
             </p>
+            <p>
+              <strong>Request Date:</strong>{" "}
+              {new Date(request.request_date).toLocaleString()}
+            </p>
+            <button
+              className="delete-button"
+              onClick={() => handleDeleteRequest(request.id)}
+            >
+              X
+            </button>
           </div>
         ))}
       </div>

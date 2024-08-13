@@ -16,9 +16,9 @@ function UserSidebar() {
           <FaWrench className="icon" />
           Services
         </a>{" "}
-        <a href="/home/chat" className="item">
+        <a href="/home/requests" className="item">
           <BiMessage className="icon" />
-          Message
+          Messages
         </a>
         <a href="/home/reviews" className="item">
           <FaStar className="icon" />

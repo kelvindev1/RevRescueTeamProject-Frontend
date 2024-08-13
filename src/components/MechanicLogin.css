@@ -4,6 +4,7 @@
     padding: 20px;
     background-color: var(--cadet-blue-creyola);
     border-radius: 12px;
+    margin-top: 250px;
 }
 
 .mechanic-login-container:hover {

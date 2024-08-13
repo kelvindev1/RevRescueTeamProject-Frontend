@@ -1,5 +1,12 @@
 import React from "react";
-import { FaStar, FaUsers, FaCog, FaTools, FaUserShield } from "react-icons/fa";
+import {
+  FaStar,
+  FaUsers,
+  FaCog,
+  FaTools,
+  FaUserShield,
+  FaRegQuestionCircle,
+} from "react-icons/fa";
 import { BiStats } from "react-icons/bi";
 import "./AdminSidebar.css";
 
@@ -22,6 +29,10 @@ function AdminSidebar() {
         <a href="/adminhomepage/mechanics" className="item">
           <FaTools className="icon" />
           Mechanics
+        </a>
+        <a href="/adminhomepage/notifications" className="item">
+          <FaRegQuestionCircle className="icon" />
+          Requests
         </a>
         <a href="/adminhomepage/reviews" className="item">
           <FaStar className="icon" />

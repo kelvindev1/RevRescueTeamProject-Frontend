@@ -11,7 +11,6 @@
 
 .admin-search-box:hover {
   box-shadow: 1px 1px 20px blue;
-  /* filter: drop-shadow(1px 1px 20px blue); */
 }
 
 
@@ -105,14 +104,4 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   outline: none;
-}
-
-
-
-/* AdminHomepage css */
-.welcome-p {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem;
-
 }

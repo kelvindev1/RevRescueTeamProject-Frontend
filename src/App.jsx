@@ -35,6 +35,7 @@ import MechanicPasswordRecovery from "./components/MechanicPasswordRecovery";
 import MechanicPasswordReset from "./components/MechanicPasswordReset";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import UserRequests from "./components/UserRequests";
 function App() {
   return (
     <>
@@ -120,7 +121,10 @@ function App() {
           <Route path="home/reviews" element={<Reviews />} />
           <Route path="/home/services" element={<ServiceList />} />
           <Route path="/home/mechanics" element={<MechanicList />} />
-          <Route path="/notifications" element={<Notifications />} />
+          <Route
+            path="/adminhomepage/notifications"
+            element={<Notifications />}
+          />
           <Route
             path="/mechanichomepage/services"
             element={<MechanicsServices />}
@@ -130,6 +134,7 @@ function App() {
           <Route path="/home/stats" element={<Stats />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/home/requests" element={<UserRequests />} />
         </Routes>
       </Router>
     </>

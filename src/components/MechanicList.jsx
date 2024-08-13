@@ -49,13 +49,13 @@ function MechanicList() {
       return;
     }
     console.log("Sending message with the following details:");
-    console.log("User ID:", 11);
+    console.log("User ID:", 4);
     console.log("Mechanic ID:", selectedMechanic.id);
     console.log("Message Content:", message);
 
     axios
       .post("http://127.0.0.1:5555/assistance_requests", {
-        user_id: 11,
+        user_id: 5,
         mechanic_id: selectedMechanic.id,
         message: message,
         resolved: false,
@@ -132,7 +132,6 @@ function MechanicList() {
                   >
                     Request Assistance
                   </button>
-                  <button className="mechanic-todo">Review Mechanic</button>
                 </div>
                 {selectedMechanic === mechanic && (
                   <>

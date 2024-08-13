@@ -1,0 +1,114 @@
+.user-requests {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.requests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.request-card {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.request-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.user-delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.request-card:hover {
+    display: flex;
+}
+
+.request-card:hover .user-delete-button {
+    display: flex;
+}
+
+.edit-form {
+    margin-top: 15px;
+}
+
+.edit-form textarea {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.edit-form button {
+    margin-right: 10px;
+}
+
+
+.user-cancel-button,
+.user-save-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 6px;
+    margin-left: 20px;
+    border-radius: 6px;
+    border: none;
+}
+
+.user-save-button:hover,
+.user-cancel-button:hover {
+    background-color: blue;
+
+}
+
+.user-edit-button {
+    background-color: blue;
+    color: #fff;
+    padding: 6px;
+    width: 20%;
+    align-self: center;
+    text-align: center;
+    border-radius: 6px;
+    border: none;
+}
+
+.user-edit-button:hover {
+    background-color: green;
+}

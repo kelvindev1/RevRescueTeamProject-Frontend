@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  BiHome,
-  BiMessage,
-  BiSolidReport,
-  BiStats,
-  BiHelpCircle,
-} from "react-icons/bi";
+import { BiHome, BiMessage, BiSolidReport, BiHelpCircle } from "react-icons/bi";
 import { FaDollarSign, FaStar, FaTools } from "react-icons/fa";
 import "./MechanicsSidebar.css";
 
@@ -21,14 +15,14 @@ function MechanicsSidebar() {
           <FaTools className="icon" />
           Add a Service
         </a>{" "}
-        <a href="/mechanichomepage/chat" className="item">
+        {/* <a href="/mechanichomepage/chat" className="item">
           <BiMessage className="icon" />
           Message
         </a>
         <a href="" className="item">
           <FaDollarSign className="icon" />
           Payments
-        </a>
+        </a> */}
         <a href="/mechanichomepage/reviews" className="item">
           <FaStar className="icon" /> Reviews
         </a>
@@ -36,10 +30,6 @@ function MechanicsSidebar() {
           <BiSolidReport className="icon" />
           Report
         </a>{" "}
-        <a href="#" className="item">
-          <BiStats className="icon" />
-          Stats
-        </a>
         <a href="#" className="item">
           <BiHelpCircle className="icon" />
           Help

@@ -126,7 +126,6 @@ function App() {
           <Route path="/home/help" element={<Help />} />
           <Route path="/home/report" element={<Report />} />
           <Route path="/home/stats" element={<Stats />} />
-          <Route path="/adminlogout" element={<AdminLogout />} />
         </Routes>
       </Router>
     </>

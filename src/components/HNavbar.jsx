@@ -12,9 +12,7 @@ function HNavbar() {
   return (
     <nav className="hnavbar">
       <div className="hnavbar__logo">
-        <NavLink to="/" className="hnavbar__link">
-          YourLogo
-        </NavLink>
+        <div className="hnavbar__link"></div>
       </div>
 
       <ul className="hnavbar__menu">

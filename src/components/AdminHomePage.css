@@ -1,0 +1,19 @@
+.mechanic__dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mechanic__sidebar {
+    width: 12%;
+    background-color: #f4f4f4;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard-mechanic-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}

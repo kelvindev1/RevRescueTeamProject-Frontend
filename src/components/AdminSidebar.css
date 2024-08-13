@@ -1,0 +1,34 @@
+.admin-sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+    height: 94vh;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.admin-sidebar-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-sidebar-menu-list .item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+    color: #273774;
+}
+
+.admin-sidebar-menu-list .item:hover,
+.active {
+    background: #273774;
+    color: #dde6ed !important;
+}

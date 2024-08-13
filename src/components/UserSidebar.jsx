@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./UserSidebar.css";
-import {
-  BiHome,
-  BiMessage,
-  BiSolidReport,
-  BiStats,
-  BiHelpCircle,
-} from "react-icons/bi";
+import { BiHome, BiMessage, BiSolidReport, BiHelpCircle } from "react-icons/bi";
 import { FaWrench, FaStar } from "react-icons/fa";
 
 function UserSidebar() {
@@ -34,10 +28,6 @@ function UserSidebar() {
           <BiSolidReport className="icon" />
           Report
         </a>{" "}
-        <a href="/home/stats" className="item">
-          <BiStats className="icon" />
-          Stats
-        </a>
         <a href="/home/help" className="item">
           <BiHelpCircle className="icon" />
           Help

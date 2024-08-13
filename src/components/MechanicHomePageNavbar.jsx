@@ -10,15 +10,7 @@ function MechanicHomePageNavbar() {
           <FaCar className="car-logo-icon" />
           <h3>RevRescue</h3>
         </div>
-        <div
-          className="mechanic-homepage-navbar-container"
-          style={{
-            margin: "15px",
-            justifyContent: "space-between",
-            textAlign: "right",
-          }}
-        >
-          About
+        <div>
           <Link
             to={"/"}
             style={{

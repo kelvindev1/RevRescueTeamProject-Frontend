@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "./api";
 import "./MechanicsServices.css";
 
 function MechanicsServices() {
@@ -9,50 +9,72 @@ function MechanicsServices() {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [mechanicId, setMechanicId] = useState(null);
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false);
+  const [services, setServices] = useState([]);
+  const [editingService, setEditingService] = useState(null);
 
   useEffect(() => {
     const fetchMechanicId = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5555/mechanic_auth/current-mechanic", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Include your JWT here
-          },
-        });
+        const response = await api.get("mechanic_auth/current-mechanic");
         setMechanicId(response.data.id);
+        fetchServices();
       } catch (error) {
-        console.error(error);
-        setError("Unable to fetch mechanic ID.");
+        console.error("Error fetching mechanic ID:", error);
+        setError(
+          "Unable to fetch mechanic ID. Please check your authentication."
+        );
       }
     };
 
     fetchMechanicId();
   }, []);
 
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [successMessage]);
+
+  const fetchServices = async () => {
+    try {
+      const response = await api.get("services");
+      const mechanicServices = response.data.filter(
+        (service) => service.mechanic_id === mechanicId
+      );
+      setServices(mechanicServices);
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      setError("Unable to fetch services.");
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setSuccessMessage("");
-    setLoading(true); // Set loading to true
+    setLoading(true);
 
     if (!mechanicId) {
       setError("Mechanic ID is not available.");
-      setLoading(false); // Set loading to false on error
+      setLoading(false);
       return;
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:5555/services", {
+      const response = await api.post("services", {
         name,
         description,
         image_url: imageUrl,
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the token here
-        },
       });
 
       if (response.status === 201) {
+        const newService = response.data.service;
+        setServices((prevServices) => [...prevServices, newService]);
         setSuccessMessage("Service created successfully!");
         setName("");
         setDescription("");
@@ -60,9 +82,75 @@ function MechanicsServices() {
       }
     } catch (error) {
       setError(error.response?.data?.message || "Error creating service");
-      console.error("Error creating service:", error); // Log error for debugging
+      console.error("Error creating service:", error);
     } finally {
-      setLoading(false); // Set loading to false after request completes
+      setLoading(false);
+    }
+  };
+
+  const handleEdit = (service) => {
+    setEditingService(service);
+    setName(service.name);
+    setDescription(service.description);
+    setImageUrl(service.image_url);
+  };
+
+  const handleUpdate = async (event) => {
+    event.preventDefault();
+    setError("");
+    setSuccessMessage("");
+    setLoading(true);
+
+    if (!editingService) {
+      setError("No service selected for editing.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await api.patch(`services/${editingService.id}`, {
+        name,
+        description,
+        image_url: imageUrl,
+      });
+
+      if (response.status === 200) {
+        const updatedService = response.data.service;
+        setServices((prevServices) =>
+          prevServices.map((service) =>
+            service.id === updatedService.id ? updatedService : service
+          )
+        );
+        setSuccessMessage("Service updated successfully!");
+        setEditingService(null);
+        setName("");
+        setDescription("");
+        setImageUrl("");
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || "Error updating service");
+      console.error("Error updating service:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    setLoading(true);
+    try {
+      const response = await api.delete(`services/${id}`);
+
+      if (response.status === 204) {
+        setServices((prevServices) =>
+          prevServices.filter((service) => service.id !== id)
+        );
+        setSuccessMessage("Service deleted successfully!");
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || "Error deleting service");
+      console.error("Error deleting service:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -70,7 +158,7 @@ function MechanicsServices() {
     <>
       <h1 className="mechanicservice-h1">Add New Service</h1>
       <div className="mechanicservice-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={editingService ? handleUpdate : handleSubmit}>
           <div>
             <input
               type="text"
@@ -100,13 +188,43 @@ function MechanicsServices() {
             />
           </div>
 
-          <button type="submit" className="submit-button" disabled={loading}>
-            {loading ? "Adding..." : "Add Service"}
+          <button
+            type="submit"
+            className="mechanic-submit-button"
+            disabled={loading}
+          >
+            {loading
+              ? editingService
+                ? "Updating..."
+                : "Adding..."
+              : editingService
+              ? "Update Service"
+              : "Add Service"}
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}
         {successMessage && <p className="success-message">{successMessage}</p>}
       </div>
+
+      {services.length > 0 ? (
+        <div className="services-list">
+          {services.map((service) => (
+            <div className="mechanic-service-card" key={service.id}>
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              {service.image_url && (
+                <img src={service.image_url} alt={service.name} />
+              )}
+              <div className="service-card-buttons">
+                <button onClick={() => handleEdit(service)}>Edit</button>
+                <button onClick={() => handleDelete(service.id)}>Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No services found.</p>
+      )}
     </>
   );
 }

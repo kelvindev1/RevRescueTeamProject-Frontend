@@ -1,15 +1,14 @@
 .mechanicservice-container {
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+
 }
 
 .mechanicservice-h1 {
     text-align: center;
-    color: #333;
+    margin-top: 20px;
     font-family: 'Arial', sans-serif;
 }
 
@@ -36,7 +35,7 @@ textarea {
     resize: none;
 }
 
-button.submit-button {
+button.mechanic-submit-button {
     padding: 10px;
     border: none;
     border-radius: 4px;
@@ -44,21 +43,96 @@ button.submit-button {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    width: 20%;
     transition: background-color 0.3s ease;
 }
 
-button.submit-button:hover {
+button.mechanic-submit-button:hover {
     background-color: #0056b3;
 }
 
+
 .error-message {
+    font-size: 16px;
     text-align: center;
-    font-weight: bold;
-    color: #dc3545;
+    margin-top: 10px;
 }
 
 .success-message {
+    font-size: 16px;
     text-align: center;
-    font-weight: bold;
-    color: #28a745;
+    margin-top: 10px;
+}
+
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+
+.mechanic-service-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mechanic-service-card h3 {
+    margin: 0 0 10px;
+}
+
+.mechanic-service-card p {
+    margin: 0 0 15px;
+    font-size: 18px;
+    color: #555;
+}
+
+.mechanic-service-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.service-card-buttons {
+    display: flex;
+    gap: 25px;
+
+}
+
+.service-card-buttons button {
+    background: #007bff;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.service-card-buttons button:hover {
+    background: #0056b3;
+}
+
+.service-card-buttons button:nth-of-type(2) {
+    background: #dc3545;
+}
+
+.service-card-buttons button:nth-of-type(2):hover {
+    background: #c82333;
+}
+
+p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
 }

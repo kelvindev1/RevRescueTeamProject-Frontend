@@ -40,8 +40,7 @@ function MechanicLogin() {
         setMessage(data.msg);
 
         if (response.ok) {
-          // Assuming your response contains a token
-          localStorage.setItem("token", data.token); // Store the token in local storage
+          localStorage.setItem("token", data.token);
           formik.resetForm();
           navigate("/mechanichomepage");
         } else {

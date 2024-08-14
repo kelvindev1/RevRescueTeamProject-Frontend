@@ -32,7 +32,6 @@ function MechanicLogin() {
             headers: {
               "Content-Type": "application/json",
             },
-            credentials: "include",
             body: JSON.stringify(values),
           }
         );
@@ -41,6 +40,8 @@ function MechanicLogin() {
         setMessage(data.msg);
 
         if (response.ok) {
+          // Assuming your response contains a token
+          localStorage.setItem("token", data.token); // Store the token in local storage
           formik.resetForm();
           navigate("/mechanichomepage");
         } else {

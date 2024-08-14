@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./MechanicsServices.css";
 
@@ -6,21 +6,50 @@ function MechanicsServices() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [mechanicId, setMechanicId] = useState("");
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [mechanicId, setMechanicId] = useState(null);
+  const [loading, setLoading] = useState(false); // New loading state
+
+  useEffect(() => {
+    const fetchMechanicId = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:5555/mechanic_auth/current-mechanic", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // Include your JWT here
+          },
+        });
+        setMechanicId(response.data.id);
+      } catch (error) {
+        console.error(error);
+        setError("Unable to fetch mechanic ID.");
+      }
+    };
+
+    fetchMechanicId();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
     setSuccessMessage("");
+    setLoading(true); // Set loading to true
+
+    if (!mechanicId) {
+      setError("Mechanic ID is not available.");
+      setLoading(false); // Set loading to false on error
+      return;
+    }
 
     try {
       const response = await axios.post("http://127.0.0.1:5555/services", {
         name,
         description,
         image_url: imageUrl,
-        mechanic_id: mechanicId,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the token here
+        },
       });
 
       if (response.status === 201) {
@@ -28,10 +57,12 @@ function MechanicsServices() {
         setName("");
         setDescription("");
         setImageUrl("");
-        setMechanicId("");
       }
     } catch (error) {
       setError(error.response?.data?.message || "Error creating service");
+      console.error("Error creating service:", error); // Log error for debugging
+    } finally {
+      setLoading(false); // Set loading to false after request completes
     }
   };
 
@@ -64,23 +95,13 @@ function MechanicsServices() {
               type="text"
               value={imageUrl}
               onChange={(e) => setImageUrl(e.target.value)}
-              placeholder="Enter a URL for the service"
+              placeholder="Enter a URL for the service image"
               required
             />
           </div>
 
-          <div>
-            <input
-              type="text"
-              value={mechanicId}
-              onChange={(e) => setMechanicId(e.target.value)}
-              required
-              placeholder="Enter your ID"
-            />
-          </div>
-
-          <button type="submit" className="submit-button">
-            Add Service
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? "Adding..." : "Add Service"}
           </button>
         </form>
         {error && <p className="error-message">{error}</p>}

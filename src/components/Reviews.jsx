@@ -111,121 +111,124 @@ function Reviews() {
   }
 
   return (
-    <div className="review-container">
-      <h2>Reviews</h2>
-      <div className="search-container">
-        <label>
-          Search by Reviewer:
-          <input
-            type="text"
-            name="searchReviewer"
-            value={searchReviewer}
-            onChange={handleSearchChange}
-            placeholder="Enter reviewer name"
-          />
-        </label>
-        <label>
-          Search by Mechanic:
-          <input
-            type="text"
-            name="searchMechanic"
-            value={searchMechanic}
-            onChange={handleSearchChange}
-            placeholder="Enter mechanic name"
-          />
-        </label>
-      </div>
-      <form onSubmit={handleSubmit} className="review-form">
-        <label>
-          User:
-          <select
-            name="user_id"
-            value={newReview.user_id}
-            onChange={handleInputChange}
-          >
-            <option value="">Select User</option>
-            {users.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.first_name} {user.last_name}
-              </option>
-            ))}
-          </select>
-        </label>
+    <>
+      <div className="review-container">
+        <h2>Reviews</h2>
+        <div className="search-container">
+          <label>
+            Search by Reviewer:
+            <input
+              type="text"
+              name="searchReviewer"
+              value={searchReviewer}
+              onChange={handleSearchChange}
+              placeholder="Enter reviewer name"
+            />
+          </label>
+          <label>
+            Search by Mechanic:
+            <input
+              type="text"
+              name="searchMechanic"
+              value={searchMechanic}
+              onChange={handleSearchChange}
+              placeholder="Enter mechanic name"
+            />
+          </label>
+        </div>
 
-        <label>
-          Mechanic:
-          <select
-            name="mechanic_id"
-            value={newReview.mechanic_id}
-            onChange={handleInputChange}
-          >
-            <option value="">Select Mechanic</option>
-            {mechanics.map((mechanic) => (
-              <option key={mechanic.id} value={mechanic.id}>
-                {mechanic.first_name} {mechanic.last_name}
-              </option>
-            ))}
-          </select>
-        </label>
+        <form onSubmit={handleSubmit} className="review-form">
+          <label>
+            Name:
+            <select
+              name="user_id"
+              value={newReview.user_id}
+              onChange={handleInputChange}
+            >
+              <option value="">Select</option>
+              {users.map((user) => (
+                <option key={user.id} value={user.id}>
+                  {user.first_name} {user.last_name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        <label>
-          Rating:
-          <div className="stars">
-            {Array.from({ length: 5 }, (_, index) => (
-              <FaStar
-                key={index}
-                color={index < newReview.rating ? "#ffc107" : "#e4e5e9"}
-                onClick={() => handleRatingChange(index + 1)}
-              />
-            ))}
-          </div>
-        </label>
+          <label>
+            Mechanic:
+            <select
+              name="mechanic_id"
+              value={newReview.mechanic_id}
+              onChange={handleInputChange}
+            >
+              <option value="">Select Mechanic</option>
+              {mechanics.map((mechanic) => (
+                <option key={mechanic.id} value={mechanic.id}>
+                  {mechanic.first_name} {mechanic.last_name}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        <label>
-          Feedback:
-          <textarea
-            name="feedback"
-            value={newReview.feedback}
-            onChange={handleInputChange}
-          />
-        </label>
+          <label>
+            Rating:
+            <div className="stars">
+              {Array.from({ length: 5 }, (_, index) => (
+                <FaStar
+                  key={index}
+                  color={index < newReview.rating ? "#ffc107" : "#e4e5e9"}
+                  onClick={() => handleRatingChange(index + 1)}
+                />
+              ))}
+            </div>
+          </label>
 
-        <button type="submit">Add Review</button>
-      </form>
+          <label>
+            Feedback:
+            <textarea
+              name="feedback"
+              value={newReview.feedback}
+              onChange={handleInputChange}
+            />
+          </label>
 
-      <div className="review-cards">
-        {reviews.length === 0 ? (
-          <div>No reviews available</div>
-        ) : (
-          reviews.map((review) => {
-            const reviewer = getUserById(review.user_id);
-            const mechanic = getMechanicById(review.mechanic_id);
+          <button type="submit">Add Review</button>
+        </form>
 
-            return (
-              <div className="review-card" key={review.id}>
-                <p>{review.feedback}</p>
-                <p>{new Date(review.created_at).toLocaleString()}</p>
-                <p>
-                  <strong>Reviewer:</strong>{" "}
-                  {reviewer
-                    ? `${reviewer.first_name} ${reviewer.last_name}`
-                    : "Loading..."}
-                </p>
-                <p>
-                  <strong>Mechanic:</strong>{" "}
-                  {mechanic
-                    ? `${mechanic.first_name} ${mechanic.last_name}`
-                    : "Loading..."}
-                </p>
-                <div className="rating">
-                  <div className="stars">{renderStars(review.rating)}</div>
+        <div className="review-cards">
+          {reviews.length === 0 ? (
+            <div>No reviews available</div>
+          ) : (
+            reviews.map((review) => {
+              const reviewer = getUserById(review.user_id);
+              const mechanic = getMechanicById(review.mechanic_id);
+
+              return (
+                <div className="review-card" key={review.id}>
+                  <p>{review.feedback}</p>
+                  <p>{new Date(review.created_at).toLocaleString()}</p>
+                  <p>
+                    <strong>Reviewer:</strong>{" "}
+                    {reviewer
+                      ? `${reviewer.first_name} ${reviewer.last_name}`
+                      : "Loading..."}
+                  </p>
+                  <p>
+                    <strong>Mechanic:</strong>{" "}
+                    {mechanic
+                      ? `${mechanic.first_name} ${mechanic.last_name}`
+                      : "Loading..."}
+                  </p>
+                  <div className="rating">
+                    <div className="stars">{renderStars(review.rating)}</div>
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        )}
+              );
+            })
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

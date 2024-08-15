@@ -9,7 +9,7 @@ function ServiceList() {
 
   const fetchServices = async (query = "") => {
     try {
-      const response = await axios.get("http://127.0.0.1:5555/services", {
+      const response = await axios.get("http://127.0.0.1:5555/services/all", {
         params: { search: query },
       });
       setServices(response.data);

@@ -92,7 +92,7 @@ const UsersList = () => {
                 <i>Car Info:</i> {user.car_info}
               </p>
               <button
-                className="delete-button"
+                className="users-all-delete-button"
                 onClick={() => handleDelete(user.id)}
               >
                 &times;

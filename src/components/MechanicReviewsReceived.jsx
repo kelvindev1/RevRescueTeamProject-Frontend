@@ -1,64 +1,103 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
+import api from "./api";
+import "./MechanicReviewsReceived.css";
 
-function MechanicReviewsReceived({ mechanicId = null }) {
+function MechanicReviewsReceived() {
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [mechanicId, setMechanicId] = useState(null);
 
   useEffect(() => {
-    async function fetchReviews() {
-      if (mechanicId === undefined || mechanicId === null) {
-        setError("No mechanic ID provided.");
-        setLoading(false);
-        return;
-      }
-
+    const fetchMechanicId = async () => {
       try {
-        const response = await axios.get(`/reviews?mechanic_id=${mechanicId}`);
-        setReviews(response.data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        const response = await api.get("mechanic_auth/current-mechanic");
+        setMechanicId(response.data.id);
+        fetchReviews(response.data.id);
+      } catch (error) {
+        console.error("Error fetching mechanic ID:", error);
+        setError("Unable to fetch mechanic ID.");
       }
+    };
+
+    fetchMechanicId();
+  }, []);
+
+  const fetchReviews = async (id) => {
+    setLoading(true);
+    try {
+      const response = await api.get("reviews", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      const mechanicReviews = response.data.filter(
+        (review) => review.mechanic_id === id
+      );
+      setReviews(mechanicReviews);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+      setError("Unable to fetch reviews.");
+    } finally {
+      setLoading(false);
     }
+  };
 
-    fetchReviews();
-  }, [mechanicId]);
+  const renderStars = (rating) => {
+    const filledStars = Math.floor(rating);
+    const emptyStars = 5 - filledStars;
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+    return (
+      <>
+        {Array(filledStars)
+          .fill("★")
+          .map((star, index) => (
+            <span key={`filled-${index}`} className="filled-star">
+              {star}
+            </span>
+          ))}
+        {Array(emptyStars)
+          .fill("☆")
+          .map((star, index) => (
+            <span key={`empty-${index}`} className="empty-star">
+              {star}
+            </span>
+          ))}
+      </>
+    );
+  };
 
   return (
-    <div>
-      <h1>Reviews for Mechanic {mechanicId}</h1>
-      {reviews.length === 0 ? (
-        <p>No reviews found.</p>
+    <>
+      <h1 className="spec-mechanic-reviews-h1">Reviews Received</h1>
+      {loading ? (
+        <p>Loading...</p>
       ) : (
-        <ul>
-          {reviews.map((review) => (
-            <li key={review.id}>
-              <p>
-                <strong>Rating:</strong> {review.rating}
-              </p>
-              <p>
-                <strong>Feedback:</strong> {review.feedback}
-              </p>
-              <p>
-                <strong>User ID:</strong> {review.user_id}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <div className="spec-mechanic-reviews-container">
+          {error && <p className="spec-error-message">{error}</p>}
+          {reviews.length === 0 ? (
+            <p>No reviews received yet.</p>
+          ) : (
+            <ul className="reviews-list">
+              {reviews.map((review) => (
+                <li className="spec-mech-review-card" key={review.id}>
+                  <h2 className="reviewer-username">
+                    {review.user_id.username}
+                  </h2>
+                  <p className="review-feedback">{review.feedback}</p>
+                  <p className="review-date">
+                    {new Date(review.created_at).toLocaleDateString()}
+                  </p>
+                  <p className="review-rating">{renderStars(review.rating)}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
-
-MechanicReviewsReceived.propTypes = {
-  mechanicId: PropTypes.number,
-};
 
 export default MechanicReviewsReceived;

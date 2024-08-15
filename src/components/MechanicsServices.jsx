@@ -18,12 +18,10 @@ function MechanicsServices() {
       try {
         const response = await api.get("mechanic_auth/current-mechanic");
         setMechanicId(response.data.id);
-        fetchServices();
+        fetchServices(response.data.id);
       } catch (error) {
         console.error("Error fetching mechanic ID:", error);
-        setError(
-          "Unable to fetch mechanic ID. Please check your authentication."
-        );
+        setError("Unable to fetch mechanic ID.");
       }
     };
 
@@ -40,16 +38,26 @@ function MechanicsServices() {
     }
   }, [successMessage]);
 
-  const fetchServices = async () => {
+  const fetchServices = async (id) => {
+    setLoading(true);
     try {
-      const response = await api.get("services");
+      const token = localStorage.getItem("token");
+
+      const response = await api.get("services", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
       const mechanicServices = response.data.filter(
-        (service) => service.mechanic_id === mechanicId
+        (service) => service.mechanic_id === id
       );
       setServices(mechanicServices);
     } catch (error) {
       console.error("Error fetching services:", error);
       setError("Unable to fetch services.");
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -6,8 +6,6 @@ import "./UserLogin.css";
 
 function UserLogin() {
   const [message, setMessage] = useState("");
-  const [user, setUser] = useState(null);
-  const [visitData, setVisitData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,48 +23,24 @@ function UserLogin() {
         .required("Email is required"),
       password: Yup.string().required("Password is required"),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         const response = await fetch("http://127.0.0.1:5555/user_auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
           body: JSON.stringify(values),
         });
 
         const data = await response.json();
-        setMessage(data.msg);
 
         if (response.ok) {
-          setUser(data.user);
-          formik.resetForm();
-
-          const lastVisit = localStorage.getItem("lastVisit");
-          const now = new Date().toISOString().split("T")[0];
-
-          if (lastVisit !== now) {
-            const visitsResponse = await fetch(
-              "http://127.0.0.1:5555/user_auth/api/visits",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                credentials: "include",
-                body: JSON.stringify({ userId: data.user.id }),
-              }
-            );
-
-            if (visitsResponse.ok) {
-              const visits = await visitsResponse.json();
-              setVisitData(visits);
-              localStorage.setItem("lastVisit", now);
-            }
-          }
-
+          localStorage.setItem("token", data.token);
+          resetForm();
           navigate("/home");
+        } else {
+          setMessage(data.message || "Invalid credentials. Please try again.");
         }
       } catch (error) {
         setMessage("An error occurred. Please try again.");
@@ -130,19 +104,11 @@ function UserLogin() {
           Don't have an account? Register here
         </Link>
       </p>
-
       <p>
         <Link to="/recover-password" className="link-to-register">
           Forgot Password? Reset Here
         </Link>
       </p>
-
-      {visitData && (
-        <div className="visit-data">
-          <h2>Visit Data</h2>
-          <p>Total Visits: {visitData.count}</p>
-        </div>
-      )}
     </div>
   );
 }

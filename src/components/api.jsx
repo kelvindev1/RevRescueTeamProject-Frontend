@@ -47,7 +47,7 @@ api.interceptors.response.use(
         console.error("Refresh token failed:", err);
         localStorage.removeItem("token");
         localStorage.removeItem("refresh_token");
-        window.location.href = "/login";
+        window.location.href = "/admin_login";
       }
     }
     return Promise.reject(error);

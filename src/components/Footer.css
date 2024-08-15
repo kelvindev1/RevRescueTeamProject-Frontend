@@ -15,7 +15,6 @@
     padding: 0 10px;
 }
 
-/* targets small devices */
 @media (max-width: 700px) {
     .container {
         flex-direction: column;
